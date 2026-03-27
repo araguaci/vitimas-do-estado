@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro de Vítimas do Estado — Projeto Open Source</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/src/app-nav.css">
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --surface: #111113;
+    --surface-2: #18181c;
+    --surface-3: #1f1f25;
+    --border: rgba(255,255,255,0.07);
+    --border-accent: rgba(255,255,255,0.12);
+    --fg: #f0f0f0;
+    --fg-2: #999;
+    --fg-3: #555;
+    --accent: #c0392b;
+    --accent-dim: rgba(192,57,43,0.15);
+    --accent-2: #e74c3c;
+    --gold: #c9a84c;
+    --gold-dim: rgba(201,168,76,0.1);
+    --green: #27ae60;
+    --green-dim: rgba(39,174,96,0.1);
+    --blue: #2980b9;
+    --blue-dim: rgba(41,128,185,0.1);
+    --mono: 'JetBrains Mono', monospace;
+    --serif: 'Crimson Pro', serif;
+    --sans: 'Syne', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  .layout { display: flex; min-height: 100vh; }
+
+  .sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+
+  .sidebar-logo {
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .logo-icon {
+    width: 28px; height: 28px;
+    background: var(--accent);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+
+  .logo-name {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+  }
+
+  .logo-sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--fg-3);
+    letter-spacing: 0.05em;
+  }
+
+  .nav {
+    padding: 12px 8px;
+    flex: 1;
+  }
+
+  .nav-section {
+    margin-bottom: 20px;
+  }
+
+  .nav-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--fg-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0 12px 6px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--fg-2);
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  a.nav-item { text-decoration: none; color: inherit; }
+  .nav-item:hover { background: var(--surface-2); color: var(--fg); }
+  .nav-item.active { background: var(--accent-dim); color: var(--accent-2); }
+  .nav-item .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .dot-red { background: var(--accent); }
+  .dot-gold { background: var(--gold); }
+  .dot-green { background: var(--green); }
+  .dot-blue { background: var(--blue); }
+  .dot-gray { background: var(--fg-3); }
+
+  .sidebar-footer {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .github-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface-2);
+    border: 1px solid var(--border-accent);
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: var(--fg-2);
+    font-size: 12px;
+    cursor: pointer;
+    width: 100%;
+    font-family: var(--mono);
+    transition: all 0.15s;
+  }
+
+  .github-btn:hover { background: var(--surface-3); color: var(--fg); }
+
+  /* ── MAIN ── */
+  .main { flex: 1; overflow-x: hidden; }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .breadcrumb {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--fg-3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .breadcrumb span { color: var(--fg-2); }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 12px;
+    color: var(--fg-3);
+    font-size: 12px;
+    font-family: var(--mono);
+    min-width: 200px;
+    cursor: text;
+    transition: border-color 0.15s;
+  }
+
+  .search-box:hover { border-color: var(--border-accent); }
+  .search-box input {
+    background: none; border: none; outline: none;
+    color: var(--fg-2); font-family: var(--mono); font-size: 12px;
+    width: 160px;
+  }
+  .search-box input::placeholder { color: var(--fg-3); }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .badge-red { background: var(--accent-dim); color: var(--accent-2); border: 1px solid rgba(192,57,43,0.25); }
+  .badge-gold { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
+  .badge-green { background: var(--green-dim); color: var(--green); border: 1px solid rgba(39,174,96,0.25); }
+  .badge-blue { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(41,128,185,0.25); }
+  .badge-gray { background: var(--surface-2); color: var(--fg-3); border: 1px solid var(--border); }
+
+  /* ── CONTENT ── */
+  .content { padding: 32px; max-width: 1100px; }
+
+  /* ── HERO BANNER ── */
+  .hero {
+    background: linear-gradient(135deg, rgba(192,57,43,0.08) 0%, transparent 60%);
+    border: 1px solid rgba(192,57,43,0.2);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 300px; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(192,57,43,0.04));
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent-2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    color: var(--fg);
+  }
+
+  .hero p {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--fg-2);
+    max-width: 600px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero-stat {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .hero-stat strong { color: var(--fg-2); }
+
+  /* ── STATS GRID ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  a.stat-card:hover {
+    border-color: var(--border-accent);
+    background: var(--surface-2);
+  }
+
+  .dashboard-alerts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .alert-card {
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    background: var(--surface-2);
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: var(--fg-2);
+    line-height: 1.55;
+  }
+  .alert-card strong { color: var(--fg); }
+  .alert-card.warn { border-color: var(--accent-2); background: var(--accent-dim); }
+  .alert-card.info { border-color: var(--blue); }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--fg-3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--fg-3);
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--fg);
+  }
+
+  .section-count {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-3);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .btn-sm {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid var(--border-accent);
+    background: var(--surface-2);
+    color: var(--fg-2);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+  }
+
+  .btn-sm:hover { background: var(--surface-3); color: var(--fg); }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .btn-primary:hover { background: var(--accent-2); border-color: var(--accent-2); color: #fff; }
+
+  /* ── FILTERS ── */
+  .filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .filter-chip {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--fg-3);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .filter-chip:hover { border-color: var(--border-accent); color: var(--fg-2); }
+  .filter-chip.active { border-color: var(--accent); color: var(--accent-2); background: var(--accent-dim); }
+
+  /* ── CASE TABLE ── */
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+
+  .table-head {
+    display: grid;
+    grid-template-columns: 40px minmax(120px,1fr) minmax(160px,1.2fr) 100px 64px 80px 76px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-2);
+  }
+
+  .th {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--fg-3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .case-row {
+    display: grid;
+    grid-template-columns: 40px minmax(120px,1fr) minmax(160px,1.2fr) 100px 64px 80px 76px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    cursor: default;
+    transition: background 0.1s;
+  }
+
+  .case-row:last-child { border-bottom: none; }
+  .case-row:hover { background: var(--surface-2); }
+
+  .case-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-3);
+  }
+
+  .case-info { display: flex; flex-direction: column; gap: 3px; }
+
+  .case-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fg);
+    letter-spacing: -0.01em;
+  }
+
+  .case-country {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .case-type {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-2);
+  }
+
+  .case-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-3);
+  }
+
+  .case-year {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--fg-2);
+  }
+
+  /* ── STRUCTURE SECTION ── */
+  .structure-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .struct-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .struct-head {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .struct-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .struct-body { padding: 16px; }
+
+  .code-block {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-2);
+    line-height: 1.8;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    overflow-x: auto;
+  }
+
+  .code-comment { color: var(--fg-3); }
+  .code-key { color: var(--gold); }
+  .code-str { color: var(--green); }
+  .code-num { color: #e67e22; }
+  .code-tag { color: var(--blue); }
+
+  /* ── TAXONOMY ── */
+  .taxonomy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .tax-item {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tax-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--fg-3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .tax-value {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fg-2);
+  }
+
+  /* ── ROADMAP ── */
+  .roadmap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+
+  .roadmap-head {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-2);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .roadmap-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .roadmap-item:last-child { border-bottom: none; }
+
+  .roadmap-phase {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--fg-3);
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+    background: var(--surface-2);
+    min-width: 60px;
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  .roadmap-phase.done { color: var(--green); border-color: rgba(39,174,96,0.3); background: var(--green-dim); }
+  .roadmap-phase.wip { color: var(--gold); border-color: rgba(201,168,76,0.3); background: var(--gold-dim); }
+  .roadmap-phase.next { color: var(--blue); border-color: rgba(41,128,185,0.3); background: var(--blue-dim); }
+
+  .roadmap-info { flex: 1; }
+  .roadmap-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; color: var(--fg); }
+  .roadmap-desc { font-size: 12px; color: var(--fg-2); line-height: 1.5; }
+
+  .roadmap-tools {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tool-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--fg-3);
+    background: var(--surface-3);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 3px;
+  }
+
+  /* ── MANIFESTO ── */
+  .manifesto {
+    background: linear-gradient(135deg, rgba(192,57,43,0.05), transparent);
+    border: 1px solid rgba(192,57,43,0.15);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+  }
+
+  .manifesto blockquote {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--fg-2);
+    line-height: 1.7;
+    font-weight: 300;
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+
+  .manifesto-attr {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .manifesto-attr::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--fg-3);
+  }
+
+  /* ── CONTRIBUTE ── */
+  .contribute {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+  }
+
+  .contribute-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .step-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .step-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent-2);
+    background: var(--accent-dim);
+    border: 1px solid rgba(192,57,43,0.2);
+    width: 22px; height: 22px;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-text { font-size: 13px; color: var(--fg-2); line-height: 1.5; }
+  .step-text strong { color: var(--fg); font-weight: 600; }
+
+  /* ── ANIM ── */
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .content > * { animation: fadeIn 0.4s ease both; }
+  .content > *:nth-child(1) { animation-delay: 0.05s; }
+  .content > *:nth-child(2) { animation-delay: 0.1s; }
+  .content > *:nth-child(3) { animation-delay: 0.15s; }
+  .content > *:nth-child(4) { animation-delay: 0.2s; }
+  .content > *:nth-child(5) { animation-delay: 0.25s; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<nav class="app-topnav" aria-label="Principal">
+  <a class="nav-brand" href="index.html">State Victims</a>
+  <a href="index.html#dashboard" class="current">Início</a>
+  <a href="index.html#casos-fundadores">Painel</a>
+  <a href="cases.html">Casos globais</a>
+  <a href="brasil.html">Brasil</a>
+  <a href="custody.html">Custódia</a>
+  <a href="contribuir.html">Contribuir</a>
+</nav>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark">
+        <div class="logo-icon">⚖</div>
+        <div>
+          <div class="logo-name">State Victims</div>
+          <div class="logo-sub">Registry v0.1.0</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-section">
+        <div class="nav-label">Visão Geral</div>
+        <a href="index.html#dashboard" class="nav-item active">
+          <span class="dot dot-red"></span> Dashboard
+        </a>
+        <a href="index.html#estrutura" class="nav-item">
+          <span class="dot dot-gray"></span> Estrutura do Projeto
+        </a>
+        <a href="index.html#roadmap" class="nav-item">
+          <span class="dot dot-blue"></span> Roadmap
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Casos</div>
+        <a href="cases.html?failure=judicial_omission" class="nav-item">
+          <span class="dot dot-red"></span> Omissão Fatal
+        </a>
+        <a href="cases.html?failure=preventive_detention_death" class="nav-item">
+          <span class="dot dot-red"></span> Prisão Preventiva
+        </a>
+        <a href="cases.html?failure=police_lethality" class="nav-item">
+          <span class="dot dot-red"></span> Violência Policial
+        </a>
+        <a href="cases.html?failure=medical_negligence_in_custody" class="nav-item">
+          <span class="dot dot-red"></span> Negligência Judicial
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Contribuir</div>
+        <a href="contribuir.html#adicionar" class="nav-item">
+          <span class="dot dot-green"></span> Adicionar Caso
+        </a>
+        <a href="contribuir.html#schema" class="nav-item">
+          <span class="dot dot-gold"></span> Schema JSON
+        </a>
+        <a href="contribuir.html#diretrizes" class="nav-item">
+          <span class="dot dot-gray"></span> Diretrizes
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Por País · registry.json</div>
+        <div id="registry-dataset-links"></div>
+        <a href="cases.html?country=ES" class="nav-item">🇪🇸 Espanha</a>
+        <a href="cases.html?country=NL" class="nav-item">🇳🇱 Holanda</a>
+        <a href="cases.html?country=IR" class="nav-item">🇮🇷 Irã</a>
+        <a href="contribuir.html#pais" class="nav-item">+ Adicionar País</a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="https://github.com/araguaci/vitimas-do-estado" target="_blank" rel="noopener noreferrer" class="github-btn" style="text-decoration:none">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        araguaci/vitimas-do-estado
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <div class="breadcrumb">
+          state-victims-registry <span>/</span> dashboard
+        </div>
+        <div class="search-box">
+          🔍 <input type="search" id="dashboard-search" placeholder="Buscar vítima, país, tipo..." autocomplete="off" aria-label="Filtrar tabela">
+        </div>
+      </div>
+      <div class="topbar-right">
+        <span class="badge badge-red">⬤ ATIVO</span>
+        <span class="badge badge-gold" id="badge-dataset-version">dataset —</span>
+        <span class="badge badge-gray">open-source</span>
+        <a href="contribuir.html#adicionar" class="btn-sm btn-primary" style="text-decoration:none;display:inline-flex;align-items:center">+ Registrar Caso</a>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- HERO -->
+      <div class="hero" id="dashboard">
+        <div class="hero-eyebrow">Registro Internacional de Responsabilidade Estatal</div>
+        <h1>Quando o Estado falha,<br>os nomes não podem ser esquecidos.</h1>
+        <p>
+          Um projeto open-source para documentar, verificar e preservar casos em que estados soberanos — por omissão, negligência ou ação direta — causaram a morte ou dano irreversível a cidadãos sob sua responsabilidade.
+        </p>
+        <div class="hero-meta">
+          <div class="hero-stat">📅 Iniciado em <strong>Março 2026</strong></div>
+          <div class="hero-stat">🌍 <strong id="hero-country-count">—</strong> países no catálogo</div>
+          <div class="hero-stat">📄 Licença <strong>CC0 1.0 Universal</strong></div>
+          <div class="hero-stat">🔀 Dados <strong id="hero-generated">—</strong></div>
+        </div>
+      </div>
+
+      <!-- STATS (valores reais via dashboard.js) -->
+      <div class="stats-grid" id="dashboard-stats">
+        <a href="cases.html" class="stat-card" style="text-decoration:none;color:inherit;cursor:pointer">
+          <div class="stat-label">Casos Registrados</div>
+          <div class="stat-value" id="stat-cases-total" style="color: var(--accent-2)">—</div>
+          <div class="stat-sub" id="stat-cases-hint">a carregar…</div>
+        </a>
+        <a href="cases.html" class="stat-card" style="text-decoration:none;color:inherit;cursor:pointer">
+          <div class="stat-label">Países</div>
+          <div class="stat-value" id="stat-countries" style="color: var(--gold)">—</div>
+          <div class="stat-sub" id="stat-countries-hint">—</div>
+        </a>
+        <div class="stat-card">
+          <div class="stat-label">Tipos de falha (únicos)</div>
+          <div class="stat-value" id="stat-failure-types" style="color: var(--blue)">—</div>
+          <div class="stat-sub" id="stat-failure-hint">no conjunto JSON</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Referências em fontes</div>
+          <div class="stat-value" id="stat-sources" style="color: var(--green)">—</div>
+          <div class="stat-sub" id="stat-sources-hint">soma por caso</div>
+        </div>
+      </div>
+
+      <div id="dashboard-alerts" class="dashboard-alerts" aria-live="polite"></div>
+
+      <!-- SEED CASES -->
+      <div class="section-header" id="casos-fundadores" style="scroll-margin-top:24px">
+        <div class="section-title">
+          ⬤ Casos Fundadores
+          <span class="section-count" id="dashboard-case-count">— registros</span>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a id="export-json" class="btn-sm" href="#" style="text-decoration:none">↓ Exportar JSON</a>
+          <button type="button" id="export-csv" class="btn-sm">↓ Exportar CSV</button>
+        </div>
+      </div>
+
+      <div class="filters filters-row">
+        <button type="button" class="filter-chip active" data-filter="all">Todos</button>
+        <button type="button" class="filter-chip" data-filter="judicial_omission">Omissão Judicial</button>
+        <button type="button" class="filter-chip" data-filter="preventive_detention_death">Prisão Preventiva</button>
+        <button type="button" class="filter-chip" data-filter="impunity_of_aggressor">Impunidade do Agressor</button>
+        <button type="button" class="filter-chip" data-filter="2022-2026">2022–2026</button>
+        <span class="filter-meta" id="dashboard-filter-meta"></span>
+      </div>
+
+      <div class="panel-legend">
+        <div class="legend-title">Legenda — tipos de falha (taxonomia)</div>
+        <div class="legend-grid" id="legend-grid-inner"></div>
+      </div>
+
+      <div class="table-wrap">
+        <div class="table-head">
+          <div class="th">#</div>
+          <div class="th">Vítima</div>
+          <div class="th">Tipo de Falha Estatal</div>
+          <div class="th">Data / Período</div>
+          <div class="th">Ano</div>
+          <div class="th">Status</div>
+          <div class="th">Ficha</div>
+        </div>
+        <div id="dashboard-case-rows"></div>
+      </div>
+
+      <!-- ESTRUTURA -->
+      <div class="section-header" id="estrutura" style="scroll-margin-top:24px">
+        <div class="section-title">📁 Estrutura do Repositório</div>
+      </div>
+
+      <div class="structure-grid">
+        <div class="struct-card">
+          <div class="struct-head">
+            <span style="color:var(--gold)">{ }</span>
+            <div class="struct-title">Schema JSON — caso individual</div>
+          </div>
+          <div class="struct-body">
+            <div class="code-block"><span class="code-comment">// cases/001-noelia-castillo-es.json</span>
+{
+  <span class="code-key">"id"</span>: <span class="code-str">"001"</span>,
+  <span class="code-key">"slug"</span>: <span class="code-str">"noelia-castillo-es"</span>,
+  <span class="code-key">"name"</span>: <span class="code-str">"Noelia Castillo Ramos"</span>,
+  <span class="code-key">"country"</span>: <span class="code-str">"ES"</span>,
+  <span class="code-key">"city"</span>: <span class="code-str">"Barcelona"</span>,
+  <span class="code-key">"age_at_death"</span>: <span class="code-num">25</span>,
+  <span class="code-key">"date_of_incident"</span>: <span class="code-str">"2022-10-04"</span>,
+  <span class="code-key">"date_of_death"</span>: <span class="code-str">"2026-03-26"</span>,
+  <span class="code-key">"failure_type"</span>: [
+    <span class="code-str">"impunity_of_aggressor"</span>,
+    <span class="code-str">"judicial_omission"</span>
+  ],
+  <span class="code-key">"state_actors"</span>: [
+    <span class="code-str">"Ministerio de Justicia ES"</span>
+  ],
+  <span class="code-key">"what_state_did_not_do"</span>: <span class="code-str">"Não levou os agressores a julgamento. Permitiu 20 meses de recursos que atrasaram o único direito restante da vítima."</span>,
+  <span class="code-key">"sources"</span>: [
+    {
+      <span class="code-key">"url"</span>: <span class="code-str">"https://..."</span>,
+      <span class="code-key">"archive"</span>: <span class="code-str">"https://web.archive.org/..."</span>,
+      <span class="code-key">"outlet"</span>: <span class="code-str">"CNN España"</span>,
+      <span class="code-key">"date"</span>: <span class="code-str">"2026-03-26"</span>
+    }
+  ],
+  <span class="code-key">"verified"</span>: <span class="code-tag">true</span>,
+  <span class="code-key">"contributor"</span>: <span class="code-str">"@araguaci"</span>
+}</div>
+          </div>
+        </div>
+
+        <div class="struct-card">
+          <div class="struct-head">
+            <span style="color:var(--blue)">📂</span>
+            <div class="struct-title">Árvore de Diretórios</div>
+          </div>
+          <div class="struct-body">
+            <div class="code-block">state-victims-registry/
+<span class="code-key">├── README.md</span>          <span class="code-comment"># missão + como contribuir</span>
+<span class="code-key">├── SCHEMA.md</span>          <span class="code-comment"># spec completa do JSON</span>
+<span class="code-key">├── TAXONOMY.md</span>        <span class="code-comment"># tipos de falha classificados</span>
+<span class="code-key">├── CONTRIBUTING.md</span>    <span class="code-comment"># guia de verificação</span>
+<span class="code-key">├── LICENSE</span>            <span class="code-comment"># CC0 1.0 Universal</span>
+│
+<span class="code-key">├── cases/</span>             <span class="code-comment"># um arquivo por caso</span>
+│   ├── 001-noelia-castillo-es.json
+│   ├── 002-cleriston-cunha-br.json
+│   ├── 003-milou-verhoof-nl.json
+│   └── 004-melika-azizi-ir.json
+│
+<span class="code-key">├── countries/</span>         <span class="code-comment"># contexto por país</span>
+│   ├── BR.md
+│   ├── ES.md
+│   ├── NL.md
+│   └── IR.md
+│
+<span class="code-key">├── taxonomy/</span>
+│   ├── failure-types.json
+│   └── state-actors.json
+│
+<span class="code-key">└── tools/</span>
+    ├── validate.js    <span class="code-comment"># valida schema</span>
+    └── export.js      <span class="code-comment"># gera CSV/RSS/sitemap</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAXONOMY -->
+      <div class="section-header" id="taxonomia" style="scroll-margin-top:24px">
+        <div class="section-title">🏷 Taxonomia de Falhas Estatais</div>
+        <span class="badge badge-gold">TAXONOMY.md</span>
+      </div>
+
+      <div class="struct-card" style="margin-bottom:28px">
+        <div class="struct-body">
+          <div class="taxonomy-grid">
+            <div class="tax-item">
+              <div class="tax-label">Tipo 1</div>
+              <div class="tax-value" style="color:var(--accent-2)">impunity_of_aggressor</div>
+            </div>
+            <div class="tax-item">
+              <div class="tax-label">Tipo 2</div>
+              <div class="tax-value" style="color:var(--accent-2)">preventive_detention_death</div>
+            </div>
+            <div class="tax-item">
+              <div class="tax-label">Tipo 3</div>
+              <div class="tax-value" style="color:var(--accent-2)">judicial_omission</div>
+            </div>
+            <div class="tax-item">
+              <div class="tax-label">Tipo 4</div>
+              <div class="tax-value" style="color:var(--gold)">medical_negligence_in_custody</div>
+            </div>
+            <div class="tax-item">
+              <div class="tax-label">Tipo 5</div>
+              <div class="tax-value" style="color:var(--gold)">police_lethality</div>
+            </div>
+            <div class="tax-item">
+              <div class="tax-label">Tipo 6</div>
+              <div class="tax-value" style="color:var(--gold)">state_law_as_weapon</div>
+            </div>
+            <div class="tax-item">
+              <div class="tax-label">Tipo 7</div>
+              <div class="tax-value" style="color:var(--blue)">denial_of_autonomous_rights</div>
+            </div>
+            <div class="tax-item">
+              <div class="tax-label">Tipo 8</div>
+              <div class="tax-value" style="color:var(--blue)">failure_to_protect_witness</div>
+            </div>
+            <div class="tax-item">
+              <div class="tax-label">Tipo 9</div>
+              <div class="tax-value" style="color:var(--fg-2)">institutional_retaliation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROADMAP -->
+      <div class="roadmap" id="roadmap" style="scroll-margin-top:24px">
+        <div class="roadmap-head">
+          <div class="section-title">🗺 Roadmap</div>
+          <span class="badge badge-blue">v0.1 → v1.0</span>
+        </div>
+
+        <div class="roadmap-item">
+          <div class="roadmap-phase done">FEITO</div>
+          <div class="roadmap-info">
+            <div class="roadmap-title">Seed Dataset — 4 casos fundadores</div>
+            <div class="roadmap-desc">Noelia Castillo, Cleriston Pereira, Milou Verhoof, Melika Azizi. Schema JSON definido, taxonomia criada.</div>
+            <div class="roadmap-tools">
+              <span class="tool-tag">JSON</span>
+              <span class="tool-tag">Markdown</span>
+              <span class="tool-tag">CC0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-item">
+          <div class="roadmap-phase wip">EM CURSO</div>
+          <div class="roadmap-info">
+            <div class="roadmap-title">Validação automatizada de schema + CI/CD no GitHub</div>
+            <div class="roadmap-desc">Script validate.js que rejeita PRs com JSON inválido ou fontes sem link de arquivo.</div>
+            <div class="roadmap-tools">
+              <span class="tool-tag">Node.js</span>
+              <span class="tool-tag">GitHub Actions</span>
+              <span class="tool-tag">Ajv</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-item">
+          <div class="roadmap-phase next">PRÓXIMO</div>
+          <div class="roadmap-info">
+            <div class="roadmap-title">Interface web pública — busca e visualização</div>
+            <div class="roadmap-desc">Site estático gerado a partir dos JSONs. Pesquisável por país, tipo de falha, período. Deploy automático.</div>
+            <div class="roadmap-tools">
+              <span class="tool-tag">Jekyll</span>
+              <span class="tool-tag">GitHub Pages</span>
+              <span class="tool-tag">Algolia</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-item">
+          <div class="roadmap-phase next">FUTURO</div>
+          <div class="roadmap-info">
+            <div class="roadmap-title">API pública + exportação RSS / Atom</div>
+            <div class="roadmap-desc">Para que jornalistas, ONGs e pesquisadores possam consumir os dados de forma programática.</div>
+            <div class="roadmap-tools">
+              <span class="tool-tag">REST API</span>
+              <span class="tool-tag">RSS</span>
+              <span class="tool-tag">CORS aberto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-item">
+          <div class="roadmap-phase next">FUTURO</div>
+          <div class="roadmap-info">
+            <div class="roadmap-title">Espelhamento automático fora de jurisdições de risco</div>
+            <div class="roadmap-desc">Mirrors em IPFS, Archive.org e servidores em países com forte proteção de liberdade de imprensa.</div>
+            <div class="roadmap-tools">
+              <span class="tool-tag">IPFS</span>
+              <span class="tool-tag">Archive.org</span>
+              <span class="tool-tag">Netlify</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MANIFESTO -->
+      <div class="manifesto" id="manifesto" style="scroll-margin-top:24px">
+        <blockquote>
+          "O Estado financia-se com o suor e o sangue dos cidadãos. Quando falha em protegê-los — e os mata por omissão ou ação — deve existir um registro permanente, impassível e incontestável. Não como vingança. Como memória. Como pressão. Como o mínimo que se deve aos que não podem mais falar."
+        </blockquote>
+        <div class="manifesto-attr">Princípio fundador do projeto</div>
+      </div>
+
+      <!-- CONTRIBUTE -->
+      <div class="contribute" id="contribuir" style="scroll-margin-top:24px">
+        <div class="contribute-title">🤝 Como Contribuir</div>
+        <p class="contrib-quicklinks" style="font-family:var(--mono);font-size:12px;color:var(--fg-2);margin-bottom:20px;line-height:1.8">
+          <a href="https://github.com/araguaci/vitimas-do-estado" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2)">Repositório</a>
+          · <a href="https://github.com/araguaci/vitimas-do-estado/fork" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2)">Fork</a>
+          · <a href="https://github.com/araguaci/vitimas-do-estado/issues" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2)">Issues</a>
+          · <a href="https://github.com/araguaci/vitimas-do-estado/pulls" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2)">Pull requests</a>
+          · <a href="https://github.com/araguaci/vitimas-do-estado/compare" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2)">Comparar branches</a>
+        </p>
+        <ul class="step-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>Fork o repositório</strong> no GitHub — <a href="https://github.com/araguaci/vitimas-do-estado/fork" target="_blank" rel="noopener noreferrer">criar fork</a>. Todos os dados vivem em ficheiros JSON versionados — sem base de dados central.</div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>Crie um ficheiro JSON</strong> na pasta <code style="font-family:var(--mono);color:var(--gold)">cases/</code> (ou alinhe com <a href="https://github.com/araguaci/vitimas-do-estado/tree/main" target="_blank" rel="noopener noreferrer">a estrutura do repo</a>) seguindo o schema em <a href="https://github.com/araguaci/vitimas-do-estado/blob/main/SCHEMA.md" target="_blank" rel="noopener noreferrer"><code style="font-family:var(--mono);color:var(--gold)">SCHEMA.md</code></a>. Fontes obrigatórias com URL verificável.</div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>Abra um Pull Request</strong> — <a href="https://github.com/araguaci/vitimas-do-estado/compare" target="_blank" rel="noopener noreferrer">comparar e propor alterações</a>. O CI pode validar o schema; um segundo revisor humano confirma as fontes antes do merge.</div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-text"><strong>Sem anonimato editorial</strong> — o contribuidor assina o registo. Dúvidas: <a href="https://github.com/araguaci/vitimas-do-estado/issues/new" target="_blank" rel="noopener noreferrer">abrir uma issue</a>.</div>
+          </li>
+        </ul>
+      </div>
+
+    </div><!-- /content -->
+  </main>
+</div>
+
+<script type="module" src="/src/dashboard.js"></script>
+<script type="module" src="/src/registry-meta.js"></script>
+
+</body>
+</html>

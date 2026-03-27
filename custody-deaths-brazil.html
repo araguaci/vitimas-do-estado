@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortes em Custódia — Brasil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=JetBrains+Mono:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0c0b0b;
+  --bg-1:      #121110;
+  --bg-2:      #1a1816;
+  --bg-3:      #222020;
+  --border:    rgba(255,255,255,0.06);
+  --border-md: rgba(255,255,255,0.10);
+  --fg:        #ede8e3;
+  --fg-2:      #a09890;
+  --fg-3:      #5a5450;
+  --red:       #c0392b;
+  --red-2:     #e74c3c;
+  --red-dim:   rgba(192,57,43,0.12);
+  --red-glow:  rgba(192,57,43,0.25);
+  --amber:     #c9944c;
+  --amber-dim: rgba(201,148,76,0.10);
+  --green:     #2e7d52;
+  --green-dim: rgba(46,125,82,0.10);
+  --mono:      'JetBrains Mono', monospace;
+  --serif:     'Playfair Display', serif;
+  --body:      'Libre Baskerville', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.6;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-3); border-radius: 2px; }
+
+/* ── HEADER ── */
+.site-header {
+  position: relative;
+  padding: 64px 48px 48px;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
+  opacity: 0.4;
+}
+
+.header-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red-2);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--red);
+}
+
+.header-eyebrow .dot-live {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--red-2);
+  animation: pulse-live 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.header-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+
+.header-title em {
+  font-style: italic;
+  color: var(--red-2);
+}
+
+.header-subtitle {
+  font-size: 15px;
+  color: var(--fg-2);
+  font-style: italic;
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+}
+
+.meta-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--fg-3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.06em;
+}
+
+.meta-tag strong { color: var(--fg-2); }
+
+/* ── COUNTER HERO ── */
+.counter-section {
+  padding: 0 48px;
+  margin: 48px 0;
+}
+
+.counter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2px;
+  background: var(--border);
+}
+
+.counter-cell {
+  background: var(--bg-1);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.counter-cell::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s ease;
+}
+
+.counter-cell.animate-bar::before {
+  transform: scaleX(1);
+}
+
+.counter-cell:first-child::before { transition-delay: 0s; }
+.counter-cell:nth-child(2)::before { transition-delay: 0.2s; }
+.counter-cell:nth-child(3)::before { transition-delay: 0.4s; }
+.counter-cell:nth-child(4)::before { transition-delay: 0.6s; }
+
+.cell-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--fg-3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.cell-number {
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 8px;
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.cell-number.red { color: var(--red-2); }
+.cell-number.amber { color: var(--amber); }
+.cell-number.live-counter { color: var(--red-2); }
+
+.cell-sub {
+  font-size: 12px;
+  color: var(--fg-3);
+  line-height: 1.5;
+}
+
+/* ── LIVE COUNTER ── */
+.live-counter-section {
+  padding: 0 48px;
+  margin-bottom: 48px;
+}
+
+.live-box {
+  background: var(--red-dim);
+  border: 1px solid var(--red-glow);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.live-left { flex: 1; min-width: 260px; }
+
+.live-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--red-2);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.live-number {
+  font-family: var(--serif);
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--red-2);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.live-sub {
+  font-size: 12px;
+  color: rgba(192,57,43,0.7);
+  margin-top: 6px;
+  font-family: var(--mono);
+}
+
+.live-right {
+  flex: 1;
+  min-width: 260px;
+}
+
+.live-explanation {
+  font-size: 13px;
+  color: var(--fg-2);
+  line-height: 1.7;
+  font-style: italic;
+  border-left: 2px solid var(--red);
+  padding-left: 16px;
+}
+
+.live-explanation strong { color: var(--fg); font-style: normal; }
+
+/* ── SECTION WRAPPER ── */
+.section {
+  padding: 0 48px;
+  margin-bottom: 56px;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+
+.section-title em { font-style: italic; color: var(--fg-2); }
+
+.section-count {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  margin-left: auto;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: 3px;
+}
+
+/* ── CASO CARDS ── */
+.casos-grid {
+  display: grid;
+  gap: 2px;
+}
+
+.caso-card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.caso-card:hover { border-color: var(--border-md); }
+.caso-card.expanded { border-color: rgba(192,57,43,0.3); }
+
+.caso-header {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 0;
+  padding: 20px 24px;
+  position: relative;
+}
+
+.caso-index {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.06em;
+}
+
+.caso-main { padding: 0 16px; }
+
+.caso-name {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.caso-name em { font-style: italic; font-weight: 400; color: var(--fg-2); font-size: 14px; }
+
+.caso-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.caso-meta span { display: flex; align-items: center; gap: 4px; }
+
+.caso-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+
+.badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.badge-red { background: var(--red-dim); color: var(--red-2); border: 1px solid rgba(192,57,43,0.2); }
+.badge-amber { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(201,148,76,0.2); }
+.badge-gray { background: var(--bg-3); color: var(--fg-3); border: 1px solid var(--border); }
+.badge-green { background: var(--green-dim); color: #4caf80; border: 1px solid rgba(46,125,82,0.2); }
+
+.caso-toggle {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--fg-3);
+  margin-left: 16px;
+  transition: transform 0.25s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.caso-card.expanded .caso-toggle { transform: rotate(45deg); color: var(--red-2); }
+
+.caso-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: 0px solid transparent;
+}
+
+.caso-card.expanded .caso-body {
+  max-height: 600px;
+  border-top: 1px solid var(--border);
+}
+
+.caso-body-inner {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.body-block { }
+
+.body-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.body-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.body-text {
+  font-size: 13px;
+  color: var(--fg-2);
+  line-height: 1.65;
+  font-style: italic;
+}
+
+.body-text strong { color: var(--fg); font-style: normal; }
+
+.body-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.body-list li {
+  font-size: 12px;
+  color: var(--fg-2);
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.body-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--red);
+  font-size: 10px;
+}
+
+.body-verdict {
+  grid-column: 1 / -1;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  padding: 14px 16px;
+}
+
+.verdict-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.verdict-text {
+  font-size: 13px;
+  color: var(--fg-2);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.verdict-text strong { color: var(--fg); font-style: normal; }
+
+/* ── PADRÕES ── */
+.padroes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.padrao-card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.padrao-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--red);
+  opacity: 0.6;
+}
+
+.padrao-num {
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--bg-3);
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.padrao-title {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 10px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  max-width: 80%;
+}
+
+.padrao-desc {
+  font-size: 13px;
+  color: var(--fg-2);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.padrao-freq {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--red-2);
+  background: var(--red-dim);
+  border: 1px solid rgba(192,57,43,0.15);
+  padding: 4px 10px;
+  display: inline-block;
+}
+
+/* ── SISTEMA TABLE ── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+}
+
+.data-table thead {
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border-md);
+}
+
+.data-table th {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.data-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  vertical-align: top;
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--bg-2); }
+
+.td-label { color: var(--fg-2); font-style: italic; }
+.td-value { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.td-value.big { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--red-2); letter-spacing: -0.03em; }
+.td-nota { font-size: 12px; color: var(--fg-3); max-width: 320px; line-height: 1.5; }
+
+/* ── CONFISSÃO BLOCK ── */
+.confissao {
+  background: var(--bg-1);
+  border: 1px solid var(--border-md);
+  border-left: 4px solid var(--red);
+  padding: 32px 36px;
+  margin-bottom: 2px;
+  position: relative;
+}
+
+.confissao-quote {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--fg);
+  line-height: 1.65;
+  margin-bottom: 16px;
+  max-width: 820px;
+}
+
+.confissao-attr {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.confissao-attr::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--fg-3);
+}
+
+.confissao-attr strong { color: var(--fg-2); }
+
+/* ── CNJ QUOTE ── */
+.cnj-quote-block {
+  background: linear-gradient(135deg, rgba(192,57,43,0.06), transparent);
+  border: 1px solid rgba(192,57,43,0.15);
+  padding: 28px 32px;
+  margin-bottom: 2px;
+}
+
+.cnj-quote-text {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.cnj-source {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--red-2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── JURISPRUDENCIA ── */
+.juris-block {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  padding: 24px 28px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.juris-icon {
+  width: 40px; height: 40px;
+  background: var(--amber-dim);
+  border: 1px solid rgba(201,148,76,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.juris-title {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+
+.juris-text {
+  font-size: 13px;
+  color: var(--fg-2);
+  line-height: 1.65;
+  font-style: italic;
+}
+
+.juris-text strong { color: var(--amber); font-style: normal; }
+
+.juris-note {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  margin-top: 12px;
+  line-height: 1.5;
+  background: var(--bg-2);
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  padding: 40px 48px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  line-height: 1.6;
+}
+
+.footer-text a {
+  color: var(--fg-2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-md);
+  transition: color 0.15s;
+}
+
+.footer-text a:hover { color: var(--fg); }
+
+.footer-license {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--fg-3);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .site-header, .counter-section, .live-counter-section, .section { padding-left: 20px; padding-right: 20px; }
+  .counter-grid { grid-template-columns: 1fr 1fr; }
+  .caso-body-inner { grid-template-columns: 1fr; }
+  .padroes-grid { grid-template-columns: 1fr; }
+  .site-footer { flex-direction: column; }
+  .live-box { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="site-header">
+  <div class="header-eyebrow fade-up">
+    <span class="dot-live"></span>
+    Registro de Responsabilidade Estatal — Brasil
+  </div>
+  <h1 class="header-title fade-up delay-1">
+    Mortes em<br><em>Custódia</em>
+  </h1>
+  <p class="header-subtitle fade-up delay-2">
+    Quando o Estado priva alguém da liberdade, assume responsabilidade total pela vida dessa pessoa. 
+    O que o Brasil faz com essa responsabilidade está documentado aqui.
+  </p>
+  <div class="header-meta fade-up delay-3">
+    <div class="meta-tag">📅 Última atualização <strong>27 Mar 2026</strong></div>
+    <div class="meta-tag">📂 Fonte principal <strong>CNJ · FGV · FBSP · MDH</strong></div>
+    <div class="meta-tag">⚖️ Licença <strong>CC0 1.0 Universal</strong></div>
+    <div class="meta-tag">🔗 <strong>github.com/state-victims-registry</strong></div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     COUNTERS
+══════════════════════════════════════════ -->
+<div class="counter-section fade-up delay-2">
+  <div class="counter-grid">
+    <div class="counter-cell">
+      <div class="cell-label">Mortes em custódia (2023)</div>
+      <div class="cell-number red" id="cnt-total">3.091</div>
+      <div class="cell-sub">Dados oficiais do Ministério dos Direitos Humanos</div>
+    </div>
+    <div class="counter-cell">
+      <div class="cell-label">Homicídios dentro das grades (2023)</div>
+      <div class="cell-number red">703</div>
+      <div class="cell-sub">1 em cada 4 mortes foi por arma de fogo ou objeto cortante</div>
+    </div>
+    <div class="counter-cell">
+      <div class="cell-label">Mortes por doenças tratáveis</div>
+      <div class="cell-number amber">62<span style="font-size:28px;font-weight:400">%</span></div>
+      <div class="cell-sub">Tuberculose, sepse, pneumonia — doenças evitáveis com cuidado mínimo</div>
+    </div>
+    <div class="counter-cell">
+      <div class="cell-label">Presos estudados pelo CNJ (2017–2021)</div>
+      <div class="cell-number">112<span style="font-size:24px">mil</span></div>
+      <div class="cell-sub">Universo analisado. Conclusão: "Morre-se muito, registra-se quase nada."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     LIVE COUNTER
+══════════════════════════════════════════ -->
+<div class="live-counter-section fade-up delay-3">
+  <div class="live-box">
+    <div class="live-left">
+      <div class="live-label">
+        <span class="dot-live"></span>
+        Mortes estimadas desde 1º jan 2026
+      </div>
+      <div class="live-number" id="live-count">—</div>
+      <div class="live-sub" id="live-sub">calculando...</div>
+    </div>
+    <div class="live-right">
+      <p class="live-explanation">
+        Baseado na taxa oficial declarada pelo presidente do STF, Barroso: 
+        <strong>"morrem quatro presos por dia no país por causas naturais"</strong>. 
+        Esse número não inclui homicídios dentro das unidades. Apenas as mortes 
+        que o próprio Estado classifica como naturais — e que o CNJ provou serem 
+        resultado de negligência sistêmica.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CONFISSÃO DO ESTADO
+══════════════════════════════════════════ -->
+<div class="section fade-up delay-3">
+  <div class="confissao">
+    <p class="confissao-quote">
+      "Toda perda de vida humana, ainda mais quando se encontre sob custódia do Estado brasileiro, deve ser lamentada com sentimento sincero. Ao que tudo indica, por causas naturais."
+    </p>
+    <div class="confissao-attr">
+      <strong>Min. Luís Roberto Barroso</strong> — Presidente do STF, 22 nov. 2023, sobre a morte de Cleriston Pereira da Cunha na Papuda
+    </div>
+  </div>
+  <div class="cnj-quote-block">
+    <p class="cnj-quote-text">"Morre-se muito, sabe-se pouco, registra-se quase nada. Praticamente não se responsabiliza, tampouco se repara."</p>
+    <div class="cnj-source">CNJ — Pesquisa Letalidade Prisional: uma Questão de Justiça e Saúde Pública</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CASOS INDIVIDUAIS
+══════════════════════════════════════════ -->
+<div class="section fade-up delay-4">
+  <div class="section-head">
+    <h2 class="section-title">Casos <em>documentados com nome</em></h2>
+    <span class="section-count">6 de 3.091+</span>
+  </div>
+
+  <div class="casos-grid" id="casos-container"></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PADRÕES
+══════════════════════════════════════════ -->
+<div class="section fade-up delay-5">
+  <div class="section-head">
+    <h2 class="section-title">Os 4 <em>padrões que se repetem</em></h2>
+    <span class="section-count">Documentados pelo CNJ em 112.000 casos</span>
+  </div>
+
+  <div class="padroes-grid">
+    <div class="padrao-card">
+      <div class="padrao-num">01</div>
+      <h3 class="padrao-title">Chegou doente — saiu morto</h3>
+      <p class="padrao-desc">Preso entra com condição tratável — tuberculose, diabetes, cardiopatia. Não recebe triagem médica de entrada. Não recebe tratamento. Morre. O Estado registra como "causa natural" e fecha o processo.</p>
+      <span class="padrao-freq">62% de todas as mortes em custódia</span>
+    </div>
+    <div class="padrao-card">
+      <div class="padrao-num">02</div>
+      <h3 class="padrao-title">Pediu socorro — ninguém ouviu</h3>
+      <p class="padrao-desc">Preso solicita atendimento médico repetidas vezes. É ignorado por dias ou semanas. Quando finalmente é internado, já está em estado terminal. Tribunal condena o Estado. Família recebe indenização. Ninguém vai preso.</p>
+      <span class="padrao-freq">Padrão recorrente em ações judiciais</span>
+    </div>
+    <div class="padrao-card">
+      <div class="padrao-num">03</div>
+      <h3 class="padrao-title">Tinha direito à liberdade — não foi solto</h3>
+      <p class="padrao-desc">Preso com laudo médico documentando risco de morte. PGR favorável à soltura. Pedido na fila há meses. O relator não analisa. O preso morre. O Estado pede informações ao presídio — e o assunto encerra.</p>
+      <span class="padrao-freq">9.471 presos ilegais soltos no mutirão de 2024</span>
+    </div>
+    <div class="padrao-card">
+      <div class="padrao-num">04</div>
+      <h3 class="padrao-title">Rebelião — Estado espera do lado de fora</h3>
+      <p class="padrao-desc">Facções massacram presos dentro de unidades administradas pelo Estado. A PM aguarda. O Estado perde o controle da única instituição que deveria controlar. 123 mortos em janeiro de 2017. Padrão se repete.</p>
+      <span class="padrao-freq">123 mortos em jan/2017 — múltiplos estados</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TABELA DE RISCOS
+══════════════════════════════════════════ -->
+<div class="section fade-up delay-5">
+  <div class="section-head">
+    <h2 class="section-title">O risco de <em>estar preso no Brasil</em></h2>
+    <span class="section-count">vs. população livre</span>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Risco</th>
+        <th>Dentro das grades</th>
+        <th>Nota</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="td-label">Contrair tuberculose</td>
+        <td class="td-value big">30×</td>
+        <td class="td-nota">maior chance que na população livre. 900 casos por 100 mil presos — vs. 20 na população geral</td>
+      </tr>
+      <tr>
+        <td class="td-label">Morrer por caquexia (enfraquecimento extremo)</td>
+        <td class="td-value big">1.350%</td>
+        <td class="td-nota">maior risco. Resultado de desnutrição crônica e falta de cuidados básicos garantidos por lei</td>
+      </tr>
+      <tr>
+        <td class="td-label">Mortes violentas intencionais (MVI)</td>
+        <td class="td-value big">4×</td>
+        <td class="td-nota">maior taxa que na população geral — dentro de espaço controlado pelo Estado 24h/dia</td>
+      </tr>
+      <tr>
+        <td class="td-label">Suicídio</td>
+        <td class="td-value big">3×</td>
+        <td class="td-nota">mais frequente que na população livre. 120 mil denúncias de tortura desde 2015</td>
+      </tr>
+      <tr>
+        <td class="td-label">Preso sem julgamento (provisório)</td>
+        <td class="td-value big">41%</td>
+        <td class="td-nota">da população carcerária. Presumidamente inocente — e exposto a todos esses riscos</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════
+     JURISPRUDÊNCIA
+══════════════════════════════════════════ -->
+<div class="section fade-up delay-6">
+  <div class="section-head">
+    <h2 class="section-title">O que o <em>STF sabe</em> — e o que faz</h2>
+  </div>
+
+  <div class="juris-block">
+    <div class="juris-icon">⚖</div>
+    <div>
+      <h3 class="juris-title">Responsabilidade Objetiva do Estado por Morte em Custódia</h3>
+      <p class="juris-text">
+        O STF fixou, por unanimidade, que <strong>o Estado tem responsabilidade objetiva por mortes em custódia</strong> — seja homicídio, suicídio ou doença. A tese: "Só o fato de um cidadão estar sob a custódia do Estado no presídio é suficiente para responsabilizar objetivamente o Estado."
+      </p>
+      <p class="juris-text" style="margin-top:8px;">
+        O relator, Min. Luiz Fux, afirmou: <strong>"Se o Estado tem o dever de custódia, o Estado tem o dever de zelar pela integridade física do preso."</strong>
+      </p>
+      <div class="juris-note">
+        ⚠ O Estado sabe que é responsável. Sabe que deve indenizar. E continua matando — porque a maioria das famílias não tem como processar, os prazos prescrevem, e o custo político de mudar é maior do que o custo financeiro de indenizar os poucos que chegam à Justiça.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="site-footer fade-up delay-7">
+  <div class="footer-text">
+    <strong style="color:var(--fg-2)">State Victims Registry — Brasil</strong><br>
+    Fontes: CNJ · Ministério dos Direitos Humanos · FGV Direito SP · FBSP Anuário 2025 · HRW · UNICEF<br>
+    Dados verificáveis. Código aberto. Contribuições via
+    <a href="https://github.com/state-victims-registry" target="_blank">github.com/state-victims-registry</a>
+  </div>
+  <div class="footer-license">CC0 1.0 Universal — Domínio Público</div>
+</footer>
+
+<script>
+// ── DADOS DOS CASOS ──
+const casos = [
+  {
+    id: 'BR-CUST-001',
+    name: 'Cleriston Pereira da Cunha',
+    apelido: '"Clezão do Ramalhão"',
+    local: 'CDP II — Papuda, Brasília, DF',
+    data: '20 nov 2023',
+    status: 'Preso provisório — nunca julgado',
+    badges: [
+      { label: 'Morto', cls: 'badge-red' },
+      { label: 'Sem julgamento', cls: 'badge-amber' }
+    ],
+    resumo: 'Preso nos atos de 8 de janeiro com sequelas cardíacas graves da Covid-19 documentadas. A defesa alertou em abril de 2023 que a prisão poderia ser "sentença de morte". A PGR emitiu parecer favorável à soltura em setembro. O min. Alexandre de Moraes nunca analisou o pedido. Cleriston morreu de infarto durante o banho de sol em 20/11/2023, às 10h58. Deixou companheira e duas filhas.',
+    omissoes: [
+      'Moraes ignorou pedido de liberdade com parecer favorável da PGR por meses',
+      'Prisão não garantiu cuidados cardíacos documentados pela defesa',
+      'Samu chegou 18 minutos após o colapso — dentro do próprio presídio',
+      'Preso preventivo morreu sem ter sido julgado após 10 meses'
+    ],
+    responsabilizacao: 'Nenhuma. Barroso classificou como "causas naturais". Família pediu prisão de Moraes por tortura e abuso de autoridade — sem desfecho. O advogado sinalizou intenção de pedir indenização.',
+    fonte: 'Agência Brasil · CNN Brasil · Gazeta do Povo · Terra'
+  },
+  {
+    id: 'BR-CUST-002',
+    name: '[Identidade protegida]',
+    apelido: 'Preso por roubo — Cajazeiras, PB',
+    local: 'Presídio Regional de Cajazeiras — Paraíba',
+    data: '23 abr 2016',
+    status: 'Condenado — entrou saudável, saiu morto',
+    badges: [
+      { label: 'Morto', cls: 'badge-red' },
+      { label: 'Estado condenado', cls: 'badge-green' }
+    ],
+    resumo: 'Preso por roubo em junho de 2015. Nunca passou por exame médico na entrada do presídio. Uma simples gripe evoluiu para pneumonia e depois tuberculose. Pediu atendimento médico diversas vezes — foi ignorado. Só foi levado ao hospital quando já estava em estado gravíssimo. Morreu em abril de 2016 com menos de um ano de prisão.',
+    omissoes: [
+      'Não realizou triagem médica de entrada — obrigatória por lei',
+      'Ignorou múltiplos pedidos de atendimento ao longo de meses',
+      'Só internalizou quando a morte já era quase inevitável',
+      'Presídio com superlotação e mofo — ambiente que facilita tuberculose'
+    ],
+    responsabilizacao: 'TJPB condenou o Estado da Paraíba a pagar R$400.000 em danos morais (R$100k para cada familiar) + pensão de 2/3 do salário mínimo. Tribunal: "O Estado não eximiu do dever de provar a exclusão de sua responsabilidade."',
+    fonte: 'TJPB · ConJur (jan/2021)'
+  },
+  {
+    id: 'BR-CUST-003',
+    name: '[Identidade protegida]',
+    apelido: 'Preso em Mongaguá — 15 dias "jogado na cela"',
+    local: 'CPP Mongaguá — São Paulo',
+    data: '06 jun 2019',
+    status: 'Condenado em progressão de regime',
+    badges: [
+      { label: 'Morto', cls: 'badge-red' },
+      { label: 'Estado condenado', cls: 'badge-green' }
+    ],
+    resumo: 'Ficou doente em maio de 2019. Passou 15 dias "jogado na cela, sem cuidado nenhum", segundo relato de outros detentos à mãe. A direção da unidade não comunicou a família sobre o adoecimento. Foi internado no Hospital Regional de Itanhaém apenas duas semanas depois — já em estado grave. Morreu em 6 de junho.',
+    omissoes: [
+      'Não comunicou a família sobre o adoecimento — mãe soube por outros presos',
+      'Não prestou atendimento médico por 15 dias enquanto o detento se deteriorava',
+      'Internalizou quando a morte já era praticamente certa',
+      'Descumpriu obrigação legal de assistência à saúde (LEP, art. 14)'
+    ],
+    responsabilizacao: 'TJSP condenou o Estado de São Paulo a pagar R$60.000 por danos morais a cada um dos 3 filhos. Desembargador: "Se o Estado nada fez diante do dever de agir, responde pela omissão. O bem maior a ser tutelado é a vida."',
+    fonte: 'ConJur (out/2024) · TJ-SP'
+  },
+  {
+    id: 'BR-CUST-004',
+    name: 'Luiz Philipi Machado Mourão',
+    apelido: '"Sicário" — investigado no caso Banco Master',
+    local: 'Custódia da PF — Superintendência MG, BH',
+    data: '06 mar 2025',
+    status: 'Preso preventivo — Op. Compliance Zero',
+    badges: [
+      { label: 'Morto', cls: 'badge-red' },
+      { label: 'Investigado', cls: 'badge-amber' }
+    ],
+    resumo: 'Preso na Operação Compliance Zero (Banco Master/Daniel Vorcaro). Atentou contra a própria vida em 4 de março enquanto estava sob custódia da PF na SR/MG. Socorrido e internado no Hospital João XXIII em BH. Morreu dois dias depois. A Comissão de Segurança Pública da Câmara aprovou 5 requerimentos questionando irregularidades nos procedimentos pós-morte.',
+    omissoes: [
+      'Não impediu o ato de autoextermínio — falha de vigilância documentada',
+      'Não garantiu transparência sobre circunstâncias da morte',
+      'Identificação do corpo questionada pelo Legislativo',
+      'Regularidade da certidão de óbito questionada em requerimentos formais'
+    ],
+    responsabilizacao: 'Investigação em andamento. 5 requerimentos aprovados na Câmara exigindo informações ao Ministério da Justiça sobre protocolos de custódia, vigilância e registros de óbito.',
+    fonte: 'Metrópoles · BHaz · O Antagonista (mar/2025)'
+  },
+  {
+    id: 'BR-CUST-005',
+    name: 'Diego Felipe Pereira da Silva',
+    apelido: 'Preso por roubo — aguardava progressão',
+    local: 'Cadeia Pública R. Vidal Pessoa — Manaus, AM',
+    data: '06 jan 2017',
+    status: 'Condenado — aguardava semiaberto',
+    badges: [
+      { label: 'Morto', cls: 'badge-red' },
+      { label: 'Chacina', cls: 'badge-amber' }
+    ],
+    resumo: 'Tinha 25 anos. Condenado por roubo, reunia as condições para progressão ao regime semiaberto. O processo não andou. Antes que pudesse se valer de um direito legalmente garantido, foi assassinado nas chacinas de janeiro de 2017 que mataram 123 presos em 3 estados. Seu corpo foi enterrado sem a cabeça.',
+    omissoes: [
+      'Não processou a progressão de regime a que ele tinha direito — processo parado',
+      'Não garantiu segurança mínima dentro de unidade sob controle do Estado',
+      'Permitiu entrada de armamento e domínio de facções nas unidades',
+      'PM esperou do lado de fora durante o massacre'
+    ],
+    responsabilizacao: 'Nenhuma responsabilização individual documentada. O Estado reconheceu "colapso do sistema". Nenhum agente penitenciário foi preso.',
+    fonte: 'Metrópoles — especial "Chacinas nos Presídios" (2019)'
+  },
+  {
+    id: 'BR-CUST-006',
+    name: '[Identidade preservada]',
+    apelido: 'Ex-marido de Flávia Torres — Bangu 4, RJ',
+    local: 'Bangu 4 — Rio de Janeiro, RJ',
+    data: '2016',
+    status: 'Condenado por tráfico — menos de 1 ano preso',
+    badges: [
+      { label: 'Morto', cls: 'badge-red' },
+      { label: 'Sem processo', cls: 'badge-gray' }
+    ],
+    resumo: 'Tinha 28 anos. Preso por tráfico de drogas, não completou nem um ano de prisão. Segundo a ex-companheira: "A gente só via ele perdendo quilos. O pai do meu filho pegou essa doença lá dentro, em Bangu 4. O lugar é um horror, cheio de mofo e um monte de gente na mesma cela. As pessoas lá são tratadas que nem bicho."',
+    omissoes: [
+      'Não preveniu transmissão em ambiente superlotado, úmido e com mofo',
+      'Não tratou tuberculose — doença tratável com antibióticos básicos',
+      'Não comunicou família sobre deterioração do estado de saúde',
+      'Morreu com menos de 1 ano de prisão por doença evitável'
+    ],
+    responsabilizacao: 'Nenhuma. Família sem recursos para acionar a Justiça. Caso nunca chegou a tribunal.',
+    fonte: 'Senado Federal — reportagem sobre tuberculose nas prisões brasileiras'
+  }
+];
+
+// ── RENDER CASOS ──
+function renderCasos() {
+  const container = document.getElementById('casos-container');
+  casos.forEach((caso, i) => {
+    const card = document.createElement('div');
+    card.className = 'caso-card';
+    card.innerHTML = `
+      <div class="caso-header" onclick="toggleCaso(this.parentElement)">
+        <div class="caso-index">0${i+1}</div>
+        <div class="caso-main">
+          <div class="caso-name">${caso.name} <em>${caso.apelido}</em></div>
+          <div class="caso-meta">
+            <span>📍 ${caso.local}</span>
+            <span>📅 ${caso.data}</span>
+            <span>⚖ ${caso.status}</span>
+          </div>
+        </div>
+        <div class="caso-badges">
+          ${caso.badges.map(b => `<span class="badge ${b.cls}">${b.label}</span>`).join('')}
+        </div>
+        <div class="caso-toggle">+</div>
+      </div>
+      <div class="caso-body">
+        <div class="caso-body-inner">
+          <div class="body-block">
+            <div class="body-label">O que aconteceu</div>
+            <p class="body-text">${caso.resumo}</p>
+          </div>
+          <div class="body-block">
+            <div class="body-label">O que o Estado não fez</div>
+            <ul class="body-list">
+              ${caso.omissoes.map(o => `<li>${o}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="body-verdict">
+            <div class="verdict-label">Responsabilização</div>
+            <p class="verdict-text">${caso.responsabilizacao}</p>
+            <p class="verdict-text" style="margin-top:8px;font-size:11px;color:var(--fg-3)"><strong>Fonte:</strong> ${caso.fonte}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function toggleCaso(card) {
+  const isOpen = card.classList.contains('expanded');
+  document.querySelectorAll('.caso-card.expanded').forEach(c => c.classList.remove('expanded'));
+  if (!isOpen) card.classList.add('expanded');
+}
+
+// ── LIVE COUNTER ──
+function updateLiveCounter() {
+  const start = new Date('2026-01-01T00:00:00');
+  const now = new Date();
+  const daysSince = (now - start) / (1000 * 60 * 60 * 24);
+  // 4 mortes/dia (Barroso) + 703/365 homicídios/dia = ~1.9/dia adicionais
+  // Usando apenas o dado oficial declarado pelo STF: 4/dia "naturais"
+  const estimated = Math.floor(daysSince * 4);
+  const todayDeaths = Math.floor(((now - new Date(now.toDateString())) / (1000 * 60 * 60 * 24)) * 4);
+  document.getElementById('live-count').textContent = estimated.toLocaleString('pt-BR');
+  document.getElementById('live-sub').textContent =
+    `~${todayDeaths} hoje · taxa: 4 mortes/dia por causas "naturais" (STF, nov/2023)`;
+}
+
+// ── BAR ANIMATION ──
+function animateBars() {
+  document.querySelectorAll('.counter-cell').forEach(cell => {
+    cell.classList.add('animate-bar');
+  });
+}
+
+// ── INIT ──
+renderCasos();
+updateLiveCounter();
+setInterval(updateLiveCounter, 30000);
+setTimeout(animateBars, 400);
+</script>
+</body>
+</html>

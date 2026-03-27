@@ -1,0 +1,199 @@
+/* Mortes em custódia — complementa site-data.css */
+
+.custody-hero {
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.custody-hero .eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 12px;
+}
+
+.custody-hero h1 {
+  font-size: clamp(22px, 4vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.custody-hero .meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-3);
+}
+
+.custody-quote {
+  background: var(--surface-2);
+  border-left: 3px solid var(--accent);
+  padding: 18px 20px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.custody-quote p {
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--fg-2);
+  font-style: italic;
+}
+
+.custody-quote .src {
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--fg-3);
+}
+
+.custody-quote .src a { color: var(--fg-2); }
+
+.custody-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 24px 0 32px;
+}
+
+.stat-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.stat-box .k {
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg-3);
+  margin-bottom: 6px;
+}
+
+.stat-box .v {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-box .note {
+  font-size: 11px;
+  color: var(--fg-3);
+  margin-top: 8px;
+}
+
+.block-text {
+  color: var(--fg-2);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.por-que ul {
+  margin: 12px 0 0 18px;
+  color: var(--fg-2);
+  font-size: 13px;
+}
+
+.por-que .conclusao {
+  margin-top: 16px;
+  padding: 14px;
+  background: rgba(201, 168, 76, 0.08);
+  border-radius: 6px;
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--fg);
+}
+
+.pattern-grid {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0 32px;
+}
+
+@media (min-width: 720px) {
+  .pattern-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.pattern-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  background: var(--surface);
+}
+
+.pattern-card h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: var(--gold);
+}
+
+.pattern-card .freq {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--fg-3);
+  margin-top: 10px;
+}
+
+.juris-box {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 22px;
+  margin: 24px 0;
+  background: linear-gradient(135deg, rgba(41, 128, 185, 0.08), transparent);
+}
+
+.juris-box h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.juris-box .tese {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--fg-2);
+  font-style: italic;
+  margin: 12px 0;
+}
+
+.cta-box {
+  margin-top: 32px;
+  padding: 22px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+}
+
+.cta-box ul {
+  margin: 12px 0 0 18px;
+  color: var(--fg-2);
+  font-size: 13px;
+}
+
+.custody-case .field {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--fg-2);
+}
+
+.custody-case .field strong {
+  display: block;
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg-3);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.custody-case ul.detail {
+  margin: 6px 0 0 16px;
+}

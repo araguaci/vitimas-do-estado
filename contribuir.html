@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contribuir — State Victims Registry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/site-data.css">
+  <link rel="stylesheet" href="/src/app-nav.css">
+</head>
+<body>
+  <nav class="app-topnav" aria-label="Principal">
+    <a class="nav-brand" href="./index.html">State Victims</a>
+    <a href="./index.html#dashboard">Início</a>
+    <a href="./index.html#casos-fundadores">Painel</a>
+    <a href="./cases.html">Casos globais</a>
+    <a href="./brasil.html">Brasil</a>
+    <a href="./custody.html">Custódia</a>
+    <a href="./contribuir.html" class="current">Contribuir</a>
+  </nav>
+  <main class="wrap">
+    <div class="hero">
+      <h1>Como contribuir</h1>
+      <p class="meta">Fluxo editorial e requisitos técnicos</p>
+      <p class="contrib-quicklinks" style="font-family:var(--mono);font-size:12px;color:var(--fg-2);margin-top:12px;line-height:1.8">
+        <a href="https://github.com/araguaci/vitimas-do-estado" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2)">github.com/araguaci/vitimas-do-estado</a>
+        · <a href="https://github.com/araguaci/vitimas-do-estado/fork" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2)">Fork</a>
+        · <a href="https://github.com/araguaci/vitimas-do-estado/issues" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2)">Issues</a>
+        · <a href="https://github.com/araguaci/vitimas-do-estado/pulls" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2)">Pull requests</a>
+      </p>
+    </div>
+
+    <section id="adicionar" style="scroll-margin-top:100px">
+      <h2 class="section-title">Adicionar caso</h2>
+      <p class="lead" style="margin-bottom:16px">Faça <a href="https://github.com/araguaci/vitimas-do-estado/fork" target="_blank" rel="noopener noreferrer">fork</a> do repositório, crie um ficheiro JSON na pasta <code style="font-family:var(--mono)">cases/</code> com fontes verificáveis e abra um <a href="https://github.com/araguaci/vitimas-do-estado/compare" target="_blank" rel="noopener noreferrer">pull request</a>.</p>
+      <p style="color:var(--fg-2);font-size:14px">Cada registo deve poder ser verificado por terceiros — links primários, arquivos ou documentos públicos.</p>
+    </section>
+
+    <section id="schema" style="margin-top:32px;scroll-margin-top:100px">
+      <h2 class="section-title">Schema JSON</h2>
+      <p class="lead" style="margin-bottom:12px">O schema está descrito em <a href="https://github.com/araguaci/vitimas-do-estado/blob/main/SCHEMA.md" target="_blank" rel="noopener noreferrer"><code style="font-family:var(--mono)">SCHEMA.md</code></a> no repositório. Campos obrigatórios incluem identificador, slug, país, narrativa e lista de fontes com URL.</p>
+    </section>
+
+    <section id="diretrizes" style="margin-top:32px;scroll-margin-top:100px">
+      <h2 class="section-title">Diretrizes</h2>
+      <ul style="color:var(--fg-2);padding-left:20px;font-size:14px;line-height:1.7">
+        <li>Sem anonimato editorial — o contribuidor assina o registo.</li>
+        <li>Sem acusações sem fonte: cada afirmação grave deve apontar para evidência.</li>
+        <li>Respeito às vítimas e famílias — linguagem factual, sem sensacionalismo.</li>
+      </ul>
+      <p style="margin-top:16px;font-size:14px"><a href="https://github.com/araguaci/vitimas-do-estado/issues/new" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2)">Abrir issue para questões editoriais</a></p>
+    </section>
+
+    <section id="pais" style="margin-top:32px;scroll-margin-top:100px">
+      <h2 class="section-title">Adicionar país</h2>
+      <p class="lead">Abra uma <a href="https://github.com/araguaci/vitimas-do-estado/issues/new" target="_blank" rel="noopener noreferrer">discussão (issue)</a> ou um PR com contexto jurídico e fontes sobre o sistema estatal do país. O manifest <code style="font-family:var(--mono)">registry.json</code> lista os datasets por região.</p>
+    </section>
+  </main>
+</body>
+</html>

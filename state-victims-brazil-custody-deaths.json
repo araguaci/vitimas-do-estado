@@ -1,0 +1,298 @@
+{
+  "registry": "State Victims Registry — Brasil — Mortes em Custódia",
+  "country": "BR",
+  "subcategoria": "deaths_in_custody",
+  "version": "0.1.0",
+  "generated": "2026-03-27",
+  "license": "CC0 1.0 Universal",
+
+  "declaracao_do_proprio_estado": {
+    "fonte": "Presidente do STF Barroso, 22/11/2023",
+    "texto": "Toda perda de vida humana, ainda mais quando se encontre sob custódia do Estado brasileiro, deve ser lamentada. Estatísticas revelam que morrem quatro presos por dia no país por 'causas naturais'.",
+    "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2023-11/presidente-do-stf-lamenta-morte-de-preso-pelo-8-de-janeiro-na-papuda",
+    "nota_critica": "O próprio STF confirma 4 mortes/dia em custódia — e as classifica como 'naturais'. O CNJ provou que essas mortes são resultado de negligência sistêmica."
+  },
+
+  "frase_do_cnj": {
+    "fonte": "Pesquisa CNJ — Letalidade Prisional: uma Questão de Justiça e Saúde Pública",
+    "texto": "Morre-se muito, sabe-se pouco, registra-se quase nada. Praticamente não se responsabiliza, tampouco se repara.",
+    "url": "https://www.cnj.jus.br/pesquisa-do-cnj-destaca-problemas-de-saude-e-ameacas-contra-a-vida-nas-prisoes-do-brasil/"
+  },
+
+  "numeros_do_sistema": {
+    "mortes_em_custodia_2023": 3091,
+    "homicidios_em_custodia_2023": 703,
+    "mortes_diarias_causas_naturais": 4,
+    "universo_estudado_CNJ_2017_2021": 112000,
+    "causa_mortes_por_doencas_pct": "62%",
+    "risco_tuberculose_vs_populacao_livre": "30x maior",
+    "risco_morte_por_caquexia_vs_livre": "1350% maior",
+    "populacao_carceraria_atual": 850000,
+    "deficit_vagas": 237694,
+    "presos_provisorios_pct": "41%",
+    "denuncias_tortura_desde_2015": 120000,
+    "suicidios_vs_populacao_livre": "3x mais frequentes",
+    "MVI_nas_prisoes_vs_populacao_geral": "4x maior",
+    "fonte": "Ministério dos Direitos Humanos, CNJ, FGV/Insper 2025"
+  },
+
+  "por_que_nao_ha_mais_nomes": {
+    "explicacao": "O apagamento é a política. O Estado brasileiro subnotifica sistematicamente mortes em custódia, registrando-as como 'causas naturais' para evitar responsabilização. Sem nome, sem processo, sem indenização.",
+    "mecanismos_de_ocultamento": [
+      "Morte registrada como 'insuficiência cardíaca' sem investigar a causa raiz (negligência médica)",
+      "Ausência de banco de dados nacional unificado de mortes em custódia",
+      "Extinção de punibilidade por morte encerra o processo — o Estado some dos autos",
+      "Famílias pobres sem recursos para acionar a Justiça Civil",
+      "Prazo prescricional corre enquanto a família desconhece o direito de indenização",
+      "MP arquiva sistematicamente — mesma lógica da letalidade policial"
+    ],
+    "conclusao_CNJ": "O Estado negligencia não só o dado, mas o próprio indivíduo. Existe um acúmulo de omissões.",
+    "fonte": "https://www.cnj.jus.br/pesquisa-do-cnj-destaca-problemas-de-saude-e-ameacas-contra-a-vida-nas-prisoes-do-brasil/"
+  },
+
+  "casos_individuais_verificados": [
+
+    {
+      "id": "BR-CUST-001",
+      "slug": "cleriston-pereira-da-cunha-papuda-2023",
+      "name": "Cleriston Pereira da Cunha",
+      "apelido": "Clezão do Ramalhão",
+      "cidade": "Brasília, DF — Complexo da Papuda",
+      "unidade_prisional": "Centro de Detenção Provisória II — Papuda",
+      "idade_morte": 46,
+      "data_prisao": "2023-01-08",
+      "data_morte": "2023-11-20",
+      "status_processual": "Preso preventivo — NUNCA julgado",
+      "condicao_saude_documentada": "Sequelas cardíacas graves da Covid-19, diabetes, hipertensão — todos documentados em laudos apresentados ao STF",
+      "alertas_ignorados": [
+        "Fevereiro 2023: defesa pediu liberdade alegando risco de morte",
+        "Abril 2023: advogado disse em plenário do STF que 'a prisão pode acarretar sentença de morte'",
+        "Agosto 2023: novo pedido de soltura com laudo médico",
+        "Setembro 2023: PGR emitiu parecer FAVORÁVEL à soltura",
+        "Novembro 2023: defesa fez última petição — sem resposta"
+      ],
+      "o_que_moraes_nao_fez": "Nunca analisou o pedido de liberdade provisória com parecer favorável da PGR. Não respondeu à CNN quando questionado sobre o motivo.",
+      "causa_mortis_oficial": "Mal súbito — infarto durante banho de sol",
+      "causa_mortis_real": "Insuficiência cardíaca provocada por sequelas da Covid-19, agravadas por condições prisionais e ausência de cuidados médicos adequados",
+      "o_que_o_preso_passou_por_ultimo": "Passou mal às 10h no pátio. Samu e Bombeiros chegaram 18 minutos depois. Reanimação sem sucesso. Óbito declarado às 10h58.",
+      "deixou": "Companheira e duas filhas",
+      "responsabilizacao": "Nenhuma. Barroso disse que foi por 'causas naturais'. Moraes pediu informações ao presídio — fim.",
+      "acao_judicial_familia": "Advogado sinalizou intenção de pedir indenização. Defesa pediu prisão de Moraes por tortura e abuso de autoridade — sem desfecho.",
+      "failure_type": [
+        "preventive_detention_death",
+        "judicial_omission",
+        "medical_negligence_in_custody"
+      ],
+      "fontes": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2023-11/preso-pelo-8-de-janeiro-tem-mal-subito-e-morre-no-presidio-da-papuda",
+        "https://www.cnnbrasil.com.br/politica/preso-pelo-8-de-janeiro-morre-na-papuda/",
+        "https://www.terra.com.br/noticias/brasil/politica/advogado-de-reu-do-8-de-janeiro-morto-na-papuda-disse-ao-stf-que-prisao-seria-sentenca-de-morte",
+        "https://www.gazetadopovo.com.br/vida-e-cidadania/preso-atos-8-janeiro-brasilia-morre-presidio-papuda/"
+      ]
+    },
+
+    {
+      "id": "BR-CUST-002",
+      "slug": "preso-tuberculose-cajazeiras-pb-2016",
+      "name": "[Identidade preservada — processo judicial público]",
+      "cidade": "Cajazeiras, Paraíba",
+      "unidade_prisional": "Presídio Regional de Cajazeiras — PB",
+      "idade_morte": "adulto — não divulgada",
+      "data_prisao": "2015-06-23",
+      "data_morte": "2016-04-23",
+      "status_processual": "Condenado — preso por roubo (Art. 157, §2º, I)",
+      "condicao_saude_documentada": "Nunca passou por exame médico na entrada do presídio. Gripe evoluiu para pneumonia, depois tuberculose.",
+      "alertas_ignorados": [
+        "Preso pediu atendimento médico 'diversas vezes' — presídio nunca prestou assistência",
+        "Família alertou sobre piora contínua do estado de saúde",
+        "Só foi internado quando já estava em estado gravíssimo"
+      ],
+      "causa_mortis_oficial": "Tuberculose",
+      "causa_mortis_real": "Tuberculose contraída no cárcere por superlotação e insalubridade, agravada por negligência médica — doença tratável com antibióticos",
+      "o_que_o_estado_nao_fez": [
+        "Não realizou exame de entrada",
+        "Ignorou múltiplos pedidos de atendimento médico",
+        "Internalizou quando já era tarde"
+      ],
+      "responsabilizacao": "TJPB condenou Estado da Paraíba a pagar R$400.000 em danos morais (R$100k para cada um dos 4 familiares) + pensão de 2/3 salário mínimo até os filhos atingirem maioridade.",
+      "nota_juridica": "Tribunal aplicou responsabilidade objetiva do Estado: 'não há como imputar ao ente estatal a exclusão da sua responsabilidade'. Estado não provou que não houve negligência.",
+      "failure_type": [
+        "medical_negligence_in_custody",
+        "preventive_detention_death"
+      ],
+      "fontes": [
+        "https://www.tjpb.jus.br/noticia/estado-devera-indenizar-familiares-de-apenado-morto-por-tuberculose-que-teria-sido-adquirida",
+        "https://www.conjur.com.br/2021-jan-02/paraiba-condenada-morte-detento-tuberculose/"
+      ]
+    },
+
+    {
+      "id": "BR-CUST-003",
+      "slug": "preso-internacao-tardia-mongagua-sp-2019",
+      "name": "[Identidade preservada — processo judicial público]",
+      "cidade": "Mongaguá, São Paulo",
+      "unidade_prisional": "Centro de Progressão Penitenciária de Mongaguá — SP",
+      "data_inicio_mal_estar": "2019-05",
+      "data_morte": "2019-06-06",
+      "status_processual": "Condenado em regime de progressão",
+      "condicao_saude_documentada": "Passou mal em maio de 2019. Ficou 15 dias 'jogado na cela, sem cuidado nenhum' segundo relato de outros detentos à mãe.",
+      "alertas_ignorados": [
+        "Mãe só soube da doença por outros presos — o presídio não a avisou",
+        "Preso ficou sem atendimento por 15 dias enquanto se deteriorava",
+        "Internação só ocorreu quando já estava em estado grave"
+      ],
+      "causa_mortis_oficial": "Não especificada nos autos publicados",
+      "causa_mortis_real": "Doença tratável — agravada por 15 dias de omissão médica total",
+      "o_que_o_estado_nao_fez": [
+        "Não comunicou a família sobre o adoecimento",
+        "Não prestou atendimento médico por 15 dias",
+        "Internalizou quando a morte já era inevitável"
+      ],
+      "responsabilizacao": "TJSP condenou o Estado de São Paulo a pagar R$60.000 por danos morais para cada um dos 3 filhos.",
+      "nota_juridica": "Desembargador aplicou 'faute du service': se o Estado nada fez diante do dever de agir, responde pela omissão. 'O bem maior a ser tutelado é a vida.'",
+      "failure_type": [
+        "medical_negligence_in_custody"
+      ],
+      "fontes": [
+        "https://www.conjur.com.br/2024-out-26/estado-e-condenado-a-indenizar-filhos-de-preso-que-morreu-depois-de-internacao-tardia/"
+      ]
+    },
+
+    {
+      "id": "BR-CUST-004",
+      "slug": "luiz-philipi-sicario-vorcaro-bf-2025",
+      "name": "Luiz Philipi Machado Mourão",
+      "apelido": "Sicário",
+      "cidade": "Belo Horizonte, MG — Superintendência Regional da PF",
+      "unidade_prisional": "Custódia da Polícia Federal — Superintendência MG",
+      "data_incidente": "2025-03-04",
+      "data_morte": "2025-03-06",
+      "status_processual": "Preso preventivo — Operação Compliance Zero (Banco Master / Daniel Vorcaro)",
+      "condicao_saude_documentada": "Não divulgada",
+      "o_que_aconteceu": "Atentou contra a própria vida enquanto estava sob custódia da PF. Socorrido e internado no Hospital João XXIII em BH. Morreu dois dias depois.",
+      "questoes_abertas": [
+        "Identificação do corpo questionada pela Comissão de Segurança Pública da Câmara",
+        "Regularidade da certidão de óbito questionada",
+        "Protocolos de vigilância e prevenção de suicídio questionados",
+        "Versões conflitantes circulam publicamente"
+      ],
+      "o_que_o_estado_nao_fez": [
+        "Não impediu o ato de autoextermínio — falha de vigilância",
+        "Não garantiu transparência sobre as circunstâncias",
+        "Informações sobre cadeia de custódia e registro de óbito questionadas pelo Legislativo"
+      ],
+      "responsabilizacao": "Comissão de Segurança da Câmara aprovou 5 requerimentos pedindo informações ao Ministério da Justiça — investigação em andamento.",
+      "nota": "Caso politicamente sensível por envolver investigação do Banco Master. A Câmara suspeita de irregularidades nos procedimentos post-mortem.",
+      "failure_type": [
+        "medical_negligence_in_custody",
+        "institutional_retaliation"
+      ],
+      "fontes": [
+        "https://www.metropoles.com/brasil/comissao-da-camara-pede-informacoes-ao-mj-sobre-morte-de-sicario-vorcaro",
+        "https://bhaz.com.br/noticias/brasil/deputados-informacoes-morte-sicario/",
+        "https://oantagonista.com.br/brasil/crusoe-comissao-quer-informacoes-de-ministro-sobre-morte-de-sicario/"
+      ]
+    },
+
+    {
+      "id": "BR-CUST-005",
+      "slug": "diego-felipe-pereira-da-silva-manaus-2017",
+      "name": "Diego Felipe Pereira da Silva",
+      "cidade": "Manaus, Amazonas",
+      "unidade_prisional": "Cadeia Pública Desembargador Raimundo Vidal Pessoa — Manaus",
+      "idade_morte": 25,
+      "data_morte": "2017-01-06",
+      "status_processual": "Condenado por roubo — aguardava progressão para semiaberto",
+      "condicao": "Reunia condições para regime semiaberto. O processo não andou.",
+      "o_que_aconteceu": "Morto nas chacinas de janeiro de 2017 que mataram 123 presos em 3 estados. Seu corpo foi enterrado sem a cabeça.",
+      "o_que_o_estado_nao_fez": [
+        "Não processou a progressão de regime a que ele tinha direito",
+        "Não garantiu segurança mínima dentro da unidade",
+        "Não impediu a entrada de facções e armamento"
+      ],
+      "responsabilizacao": "Nenhuma responsabilização individual documentada. Estado reconheceu 'colapso do sistema'.",
+      "failure_type": [
+        "preventive_detention_death",
+        "judicial_omission",
+        "medical_negligence_in_custody"
+      ],
+      "fontes": [
+        "https://www.metropoles.com/materias-especiais/chacinas-nos-presidios-conheca-as-123-historias-dos-detentos-mortos"
+      ]
+    },
+
+    {
+      "id": "BR-CUST-006",
+      "slug": "ex-marido-flavia-torres-tuberculose-bangu-2016",
+      "name": "[Identidade preservada — relato jornalístico]",
+      "apelido_contexto": "Ex-marido de Flávia Torres",
+      "cidade": "Rio de Janeiro, RJ",
+      "unidade_prisional": "Bangu 4 — Rio de Janeiro",
+      "idade_morte": 28,
+      "data_morte": "2016",
+      "status_processual": "Condenado por tráfico de drogas — menos de 1 ano preso",
+      "relato_familiar": "A gente só via ele perdendo quilos. O pai do meu filho pegou essa doença lá dentro, em Bangu 4, em 2016. O lugar é um horror, cheio de mofo e um monte de gente na mesma cela. As pessoas lá são tratadas que nem bicho.",
+      "causa_mortis": "Tuberculose — doença tratável, contraída no cárcere",
+      "o_que_o_estado_nao_fez": [
+        "Não preveniu transmissão em cela superlotada e com mofo",
+        "Não tratou adequadamente doença diagnosticável",
+        "Morreu com menos de 1 ano de prisão — sem ter cumprido sequer o início da pena"
+      ],
+      "responsabilizacao": "Não documentada — família sem recursos para acionar a Justiça",
+      "failure_type": [
+        "medical_negligence_in_custody"
+      ],
+      "fontes": [
+        "https://www2.senado.leg.br/bdsf/bitstream/handle/id/569436/noticia.html"
+      ]
+    }
+  ],
+
+  "casos_sem_nome_documentados": {
+    "descricao": "O CNJ analisou 112.000 mortes entre 2017 e 2021. Cada uma delas tem uma família. Nenhuma tem visibilidade pública. Esses são os padrões que se repetem em todos eles.",
+    "padroes_recorrentes": [
+      {
+        "padrao": "Chegou doente — saiu morto",
+        "descricao": "Preso entra com condição tratável (tuberculose, diabetes, cardiopatia). Não recebe tratamento. Morre. O Estado registra como 'causa natural'.",
+        "frequencia": "62% de todas as mortes em custódia"
+      },
+      {
+        "padrao": "Pediu socorro — ninguém ouviu",
+        "descricao": "Preso solicita atendimento médico repetidas vezes. É ignorado por dias ou semanas. Quando é internado, já está em estado terminal.",
+        "frequencia": "Padrão documentado em múltiplas ações judiciais com condenação do Estado"
+      },
+      {
+        "padrao": "Tinha direito à liberdade — não foi solto",
+        "descricao": "Preso com condição médica documentada, com parecer favorável da PGR ou com direito à progressão de regime. O processo fica parado. A pessoa morre presa.",
+        "frequencia": "Exemplo mais documentado: Cleriston Pereira da Cunha. Estimativa CNJ: 9.471 presos ilegalmente em 2024."
+      },
+      {
+        "padrao": "Rebelião com chacina — Estado não entra",
+        "descricao": "Facções massacram presos dentro de unidades administradas pelo Estado. PM espera do lado de fora. O Estado perde o controle — e ninguém é responsabilizado.",
+        "frequencia": "123 mortos em janeiro de 2017. Padrão se repete em múltiplos estados."
+      }
+    ]
+  },
+
+  "jurisprudencia_aplicavel": {
+    "stf_responsabilidade_objetiva": {
+      "descricao": "STF fixou que o Estado tem responsabilidade objetiva por mortes em custódia — seja por homicídio, seja por suicídio, seja por doença.",
+      "tese": "Só o fato de um cidadão estar sob a custódia do Estado no presídio é suficiente para responsabilizar objetivamente o Estado.",
+      "relator": "Min. Luiz Fux — aprovado por unanimidade",
+      "fonte": "https://www.jusbrasil.com.br/noticias/estado-pode-ter-de-indenizar-familia-de-preso-que-morrer-na-prisao-diz-stf/353345573"
+    },
+    "nota_pratica": "O Estado sabe que é responsável. Sabe que deve indenizar. E continua matando — porque a maioria das famílias não tem como processar, os prazos prescrevem, e o custo político de mudar é maior do que o custo financeiro de indenizar os poucos que chegam à Justiça."
+  },
+
+  "chamada_para_contribuicao": {
+    "descricao": "3.091 mortes em custódia em 2023. Apenas 6 casos têm nome neste arquivo. Os outros 3.085 estão esperando.",
+    "como_contribuir": "Se você é familiar de vítima, advogado, defensor público, jornalista ou pesquisador com documentação de caso específico — abra um PR em https://github.com/araguaci/vitimas-do-estado",
+    "o_que_precisamos": [
+      "Nome completo da vítima",
+      "Unidade prisional",
+      "Data e circunstâncias da morte",
+      "O que o Estado não fez",
+      "Fonte verificável (processo judicial, reportagem, documento oficial)"
+    ]
+  }
+}

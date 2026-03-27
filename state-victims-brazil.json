@@ -1,0 +1,209 @@
+{
+  "registry": "State Victims Registry — BRASIL",
+  "country": "BR",
+  "version": "0.1.0",
+  "generated": "2026-03-27",
+  "license": "CC0 1.0 Universal",
+  "curator": "state-victims-registry",
+
+  "panorama_sistemico": {
+    "descricao": "O Brasil não tem apenas casos isolados de falha estatal — tem sistemas inteiros que produzem mortes em escala industrial. Os números abaixo são o contexto que torna cada caso individual possível.",
+
+    "letalidade_policial": {
+      "mortes_2024": 6121,
+      "mortes_2023": 6391,
+      "responsabilizacoes_SP_2018_2024": 0,
+      "fonte_responsabilizacao": "FGV Direito SP — Mapas da (In)Justiça — 859 inquéritos analisados, 100% arquivados",
+      "nota": "Em São Paulo, entre 2018 e 2024, nenhum policial foi responsabilizado por morte letal em abordagem. 100% dos inquéritos foram arquivados pelo MP.",
+      "criancas_adolescentes_mortos_SP_2024": 77,
+      "variacao_criancas_SP_2022_2024": "+120%",
+      "fonte": [
+        "https://agenciabrasil.ebc.com.br/geral/noticia/2025-05/nenhum-policial-e-responsabilizado-por-abordagem-letal-ha-7-anos-em-sp",
+        "https://www.unicef.org/brazil/comunicados-de-imprensa/mortes-de-criancas-e-adolescentes-por-intervencao-policial-crescem-120-no-estado-de-sao-paulo-entre-2022-2024"
+      ]
+    },
+
+    "feminicidio": {
+      "mortes_2025": 1561,
+      "mortes_2024": 1501,
+      "media_diaria_2025": 4.28,
+      "vitimas_com_BO_previo_2025_pct": 30,
+      "caso_emblematico_19_BO": "Mulher de 32 anos registrou 19 boletins de ocorrência em 6 anos. Foi morta mesmo assim.",
+      "MPU_descumpridas_2024": 108000,
+      "MPU_total_concedidas_2024": 1000000,
+      "MPU_descumprimento_pct": "10.8%",
+      "nota_FBSP": "Se a alta de casos está acontecendo, isso é uma omissão do Estado, porque esse é um crime evitável",
+      "fonte": [
+        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-02/brasil-atinge-recorde-de-feminicidios-em-2025-quatro-mortes-por-dia",
+        "https://agenciapatriciagalvao.org.br/violencia/feminicidio/tres-de-cada-dez-vitimas-de-feminicidio-no-brasil-ja-tinham-registrado-denuncia-contra-o-autor/"
+      ]
+    },
+
+    "presos_preventivos": {
+      "percentual_sem_condenacao": "41%",
+      "total_encarcerados_2023": 663906,
+      "capacidade_sistema": 458981,
+      "superlotacao_pct": "44%",
+      "mortes_por_doenca_pct": "62%",
+      "nota": "62% das mortes em prisões brasileiras são causadas por doenças — resultado direto de negligência médica sistêmica. 41% dos presos são provisórios, sem condenação.",
+      "mutirao_2024_preventivas_revogadas_pct": "30%",
+      "pessoas_soltas_no_mutirao": 9471,
+      "nota_mutirao": "Em 2024, o CNJ revisou 263 mil processos e revogou 30% das preventivas — confirmando que milhares estavam presos ilegalmente.",
+      "fonte": [
+        "https://jornal.usp.br/radio-usp/cerca-de-62-das-mortes-em-prisoes-brasileiras-sao-causadas-por-doencas/",
+        "https://www.conjur.com.br/2025-mar-26/mutiroes-carcerarios-e-plano-pena-justa-para-os-que-se-preocupam-com-nosso-falido-sistema-prisional/"
+      ]
+    }
+  },
+
+  "casos_individuais": [
+
+    {
+      "id": "BR-001",
+      "slug": "cleriston-pereira-da-cunha",
+      "name": "Cleriston Pereira da Cunha",
+      "cidade": "Brasília, DF",
+      "idade": 46,
+      "data_prisao": "2023-01-08",
+      "data_morte": "2023-11-20",
+      "failure_type": [
+        "preventive_detention_death",
+        "judicial_omission",
+        "medical_negligence_in_custody"
+      ],
+      "resumo": "Preso nos atos de 8 de janeiro, tinha sequelas cardíacas graves da Covid-19. Defesa alertou desde fevereiro de 2023 que a prisão seria 'sentença de morte'. PGR favorável à soltura em setembro. Alexandre de Moraes nunca analisou o pedido. Morreu de infarto na Papuda em 20/11/2023 — sem ter sido julgado.",
+      "o_que_o_estado_nao_fez": [
+        "Moraes não analisou pedido de liberdade com parecer favorável da PGR por meses",
+        "Prisão não garantiu cuidados cardíacos adequados documentados pela defesa",
+        "Preso preventivo morreu sem julgamento após 10 meses de detenção"
+      ],
+      "agressor_punido": false,
+      "status": "MORTO",
+      "fontes": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2023-11/preso-pelo-8-de-janeiro-tem-mal-subito-e-morre-no-presidio-da-papuda",
+        "https://www.cnnbrasil.com.br/politica/preso-pelo-8-de-janeiro-morre-na-papuda/"
+      ]
+    },
+
+    {
+      "id": "BR-002",
+      "slug": "marco-aurelio-cardenas-acosta",
+      "name": "Marco Aurélio Cardenas Acosta",
+      "cidade": "São Paulo, SP",
+      "idade": 22,
+      "data_morte": "2024",
+      "failure_type": [
+        "police_lethality",
+        "impunity_of_aggressor",
+        "institutional_retaliation"
+      ],
+      "resumo": "Estudante de medicina de 22 anos assassinado por dois policiais militares em um hotel na zona sul de São Paulo. Câmeras de segurança registraram a agressão e o tiro. A família recorreu à ONU. Os policiais seguem impunes.",
+      "o_que_o_estado_nao_fez": [
+        "Policiais envolvidos não foram responsabilizados criminalmente",
+        "MP arquivou o caso — padrão em 100% dos inquéritos de letalidade policial em SP (2018–2024)",
+        "Família foi obrigada a recorrer à ONU para buscar justiça"
+      ],
+      "agressor_punido": false,
+      "agressor_status": "PMs seguem impunes — investigação interna sem desfecho criminal",
+      "status": "MORTO",
+      "fontes": [
+        "https://tvbrasil.ebc.com.br/reporter-brasil/2025/07/mais-de-62-mil-pessoas-foram-mortas-por-policiais-no-brasil-em-2024"
+      ]
+    },
+
+    {
+      "id": "BR-003",
+      "slug": "mulher-32-anos-19-boletins-feminicidio",
+      "name": "[Identidade preservada por lei] — Mulher, 32 anos",
+      "cidade": "Brasil (estado não divulgado)",
+      "idade": 32,
+      "data_morte": "2025-04",
+      "failure_type": [
+        "impunity_of_aggressor",
+        "judicial_omission",
+        "failure_to_protect_witness"
+      ],
+      "resumo": "Vítima de feminicídio em abril de 2025. Ao longo de quase 6 anos, registrou 19 boletins de ocorrência que resultaram em 15 registros formais de violência doméstica. O Estado recebeu sua denúncia 19 vezes. Ela foi morta assim mesmo.",
+      "o_que_o_estado_nao_fez": [
+        "Não converteu 19 boletins em proteção efetiva",
+        "Medidas protetivas não impediram o feminicídio",
+        "Sistema judicial não interrompeu o ciclo de violência em 6 anos de denúncias"
+      ],
+      "agressor_punido": "desconhecido",
+      "status": "MORTA",
+      "nota_ministerio": "Dado oficial do Ministério da Justiça: 30% das vítimas de feminicídio de 2025 já tinham BO anterior. 20% foram mortas em até 24 meses após o primeiro registro.",
+      "fontes": [
+        "https://agenciapatriciagalvao.org.br/violencia/feminicidio/tres-de-cada-dez-vitimas-de-feminicidio-no-brasil-ja-tinham-registrado-denuncia-contra-o-autor/"
+      ]
+    },
+
+    {
+      "id": "BR-004",
+      "slug": "categoria-mortes-prisao-doencas-brasil",
+      "name": "[CATEGORIA] Mortes por doença em prisões brasileiras — 2024",
+      "cidade": "Brasil — sistema prisional",
+      "failure_type": [
+        "medical_negligence_in_custody",
+        "preventive_detention_death"
+      ],
+      "resumo": "62% das mortes em prisões brasileiras são causadas por doenças, resultado de negligência médica sistêmica documentada pela USP. O sistema penitenciário excede a capacidade em 44% (663.906 presos para 458.981 vagas). Mortes são frequentemente registradas como 'naturais' para ocultar a negligência.",
+      "o_que_o_estado_nao_fez": [
+        "Não garantiu assistência à saúde obrigatória por lei (LEP Art. 14)",
+        "Registra mortes como 'naturais' ocultando negligência — subnotificação sistêmica",
+        "Mantém sistema 44% acima da capacidade há décadas sem solução"
+      ],
+      "status": "CATEGORIA_ABERTA — mortes anuais não contabilizadas individualmente",
+      "fontes": [
+        "https://jornal.usp.br/radio-usp/cerca-de-62-das-mortes-em-prisoes-brasileiras-sao-causadas-por-doencas/",
+        "https://www.hrw.org/pt/world-report/2024/country-chapters/brazil"
+      ]
+    },
+
+    {
+      "id": "BR-005",
+      "slug": "categoria-letalidade-policial-criancas-sp-2024",
+      "name": "[CATEGORIA] Crianças e adolescentes mortos por PM em SP — 2024",
+      "cidade": "São Paulo, SP",
+      "failure_type": [
+        "police_lethality",
+        "impunity_of_aggressor"
+      ],
+      "resumo": "Em 2024, 77 crianças e adolescentes (10–19 anos) foram mortos pela Polícia Militar de São Paulo — aumento de 120% em relação a 2022 (35 vítimas). 1 em cada 3 mortes violentas de jovens em SP foi causada por policiais. Nenhum policial foi responsabilizado criminalmente em São Paulo entre 2018 e 2024 por morte em abordagem.",
+      "o_que_o_estado_nao_fez": [
+        "Não responsabilizou nenhum policial em 7 anos (859 inquéritos — 100% arquivados)",
+        "Mudou protocolos de câmeras corporais no período em que mortes de jovens dobraram",
+        "MP arquivou sistematicamente todos os casos de letalidade policial"
+      ],
+      "status": "CATEGORIA_ABERTA",
+      "fontes": [
+        "https://www.unicef.org/brazil/comunicados-de-imprensa/mortes-de-criancas-e-adolescentes-por-intervencao-policial-crescem-120-no-estado-de-sao-paulo-entre-2022-2024",
+        "https://agenciabrasil.ebc.com.br/geral/noticia/2025-05/nenhum-policial-e-responsabilizado-por-abordagem-letal-ha-7-anos-em-sp"
+      ]
+    }
+  ],
+
+  "numeros_que_nao_tem_nome": {
+    "descricao": "Mortes que o Estado brasileiro produz em escala — cada número é uma pessoa",
+    "tabela": [
+      { "categoria": "Mortes por intervenção policial", "ano": 2024, "total": 6121, "nota": "Queda de 4% — ainda 6 mil pessoas" },
+      { "categoria": "Feminicídios consumados", "ano": 2025, "total": 1561, "nota": "Recorde histórico. 30% tinham BO prévio." },
+      { "categoria": "Feminicídios com MPU descumprida", "ano": 2024, "total": 108000, "nota": "10.8% das medidas protetivas violadas sem consequência" },
+      { "categoria": "Presos provisórios (sem julgamento)", "ano": 2023, "total": 272000, "nota": "41% da população carcerária — presunção de inocência violada em massa" },
+      { "categoria": "Mortes em prisões por doenças", "ano": 2024, "total": "n/d", "nota": "62% das mortes prisionais — subnotificadas como 'naturais'" },
+      { "categoria": "Preventivas revogadas pelo CNJ (deveriam não existir)", "ano": 2024, "total": 9471, "nota": "Pessoas que estavam presas ilegalmente e foram soltas no mutirão" },
+      { "categoria": "Crianças mortas por PM em SP", "ano": 2024, "total": 77, "nota": "+120% vs 2022. Nenhum policial responsabilizado." },
+      { "categoria": "Estupros registrados (estimativa subnotificada)", "ano": 2024, "total": 87545, "nota": "Maior número da história. 87.7% vítimas mulheres. 70.6% agressor familiar/parceiro." }
+    ]
+  },
+
+  "fontes_primarias": [
+    { "titulo": "19º Anuário Brasileiro de Segurança Pública 2025", "url": "https://forumseguranca.org.br/" },
+    { "titulo": "Atlas da Violência 2025 — IPEA", "url": "https://www.ipea.gov.br/atlasviolencia/" },
+    { "titulo": "Mapas da (In)Justiça — FGV Direito SP", "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2025-05/nenhum-policial-e-responsabilizado-por-abordagem-letal-ha-7-anos-em-sp" },
+    { "titulo": "Retrato dos Feminicídios no Brasil 2026 — FBSP", "url": "https://forumseguranca.org.br/wp-content/uploads/2026/03/nota-tecnica-dia-mulher-2026.pdf" },
+    { "titulo": "Monitor de Feminicídios — LESFEM/UEL", "url": "https://sites.uel.br/lesfem/monitor-brasil/" },
+    { "titulo": "HRW — Relatório Brasil 2024", "url": "https://www.hrw.org/pt/world-report/2024/country-chapters/brazil" },
+    { "titulo": "UNICEF — Mortes de adolescentes por PM em SP", "url": "https://www.unicef.org/brazil/comunicados-de-imprensa/mortes-de-criancas-e-adolescentes-por-intervencao-policial-crescem-120-no-estado-de-sao-paulo-entre-2022-2024" },
+    { "titulo": "Agência Patrícia Galvão — 30% com BO prévio", "url": "https://agenciapatriciagalvao.org.br/violencia/feminicidio/tres-de-cada-dez-vitimas-de-feminicidio-no-brasil-ja-tinham-registrado-denuncia-contra-o-autor/" }
+  ]
+}

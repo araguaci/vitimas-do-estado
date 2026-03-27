@@ -1,0 +1,408 @@
+{
+  "registry": "State Victims Registry",
+  "version": "0.2.0",
+  "generated": "2026-03-27",
+  "license": "CC0 1.0 Universal",
+  "total_cases": 8,
+  "notes": "Casos verificados com fontes primárias. Milou Verhoof e Melika Azizi: status vivos com risco/morte iminente documentada. Busca por 30+ casos adicionais: requer contribuição da comunidade — ver CONTRIBUTING.md.",
+
+  "cases": [
+
+    {
+      "id": "001",
+      "slug": "noelia-castillo-ramos-es",
+      "name": "Noelia Castillo Ramos",
+      "country": "ES",
+      "city": "Barcelona, Catalunya",
+      "age_at_key_event": 25,
+      "date_of_incident": "2022-10-04",
+      "date_of_death": "2026-03-26",
+      "failure_type": [
+        "impunity_of_aggressor",
+        "judicial_omission",
+        "state_custody_failure"
+      ],
+      "what_happened": "Noelia foi colocada em tutela estatal aos 13 anos. Num centro juvenil supervisionado pelo Estado catalão, sofreu estupro coletivo por três jovens. O Estado não levou os agressores a julgamento. Após tentativa de suicídio (queda do 5º andar), ficou paraplégica. Pediu eutanásia em 2024. Seu pai, assistido por grupo ultracatólico, travou batalha judicial de 20 meses através de 5 instâncias — incluindo o TEDH — para impedir a morte da própria filha. A eutanásia foi aplicada em 26/03/2026.",
+      "what_state_did_not_do": [
+        "Não protegeu menor em tutela estatal de agressão sexual",
+        "Não levou agressores a julgamento apesar de provas médicas",
+        "Permitiu instrumentalização judicial por 20 meses que prolongou o sofrimento da vítima"
+      ],
+      "state_actors": [
+        "Generalitat de Catalunya — tutela juvenil",
+        "Sistema judicial espanhol — omissão na ação penal dos agressores"
+      ],
+      "aggressor_punished": false,
+      "status": "DECEASED",
+      "verified": true,
+      "sources": [
+        {
+          "outlet": "CNN Español",
+          "url": "https://cnnespanol.cnn.com/2026/03/26/espana/noelia-castillo-eutanasia-batalla-legal-orix",
+          "date": "2026-03-26"
+        },
+        {
+          "outlet": "El Informador",
+          "url": "https://www.informador.mx/internacional/quien-es-noelia-castillo-ramos-joven-que-recibira-la-eutanasia-en-barcelona-20260326-0018.html",
+          "date": "2026-03-26"
+        },
+        {
+          "outlet": "Daily Wire — análise crítica do papel do Estado",
+          "url": "https://www.dailywire.com/news/the-state-took-her-from-her-family-then-it-decided-she-should-die",
+          "date": "2026-03-26"
+        }
+      ]
+    },
+
+    {
+      "id": "002",
+      "slug": "cleriston-pereira-da-cunha-br",
+      "name": "Cleriston Pereira da Cunha",
+      "country": "BR",
+      "city": "Brasília, Distrito Federal",
+      "age_at_key_event": 46,
+      "date_of_incident": "2023-01-08",
+      "date_of_death": "2023-11-20",
+      "failure_type": [
+        "preventive_detention_death",
+        "judicial_omission",
+        "medical_negligence_in_custody"
+      ],
+      "what_happened": "Preso em flagrante no Senado durante os atos de 8 de janeiro, Cleriston tinha sequelas cardíacas graves da Covid-19. Sua defesa alertou desde fevereiro de 2023 que a prisão poderia ser 'sentença de morte'. Em setembro, a própria PGR se manifestou favorável à soltura. O ministro Alexandre de Moraes nunca analisou o pedido. Em 20/11/2023, Cleriston passou mal durante o banho de sol na Papuda e morreu. Nunca havia sido julgado. Deixou companheira e duas filhas.",
+      "what_state_did_not_do": [
+        "Não analisou pedido de liberdade provisória com parecer favorável da PGR",
+        "Não garantiu cuidados médicos adequados para condição cardíaca documentada",
+        "Manteve prisão preventiva sem julgamento por 10 meses com risco de morte conhecido"
+      ],
+      "state_actors": [
+        "Ministro Alexandre de Moraes — STF — omissão na análise do pedido de soltura",
+        "Centro de Detenção Provisória II — Complexo da Papuda — negligência médica"
+      ],
+      "aggressor_punished": false,
+      "status": "DECEASED",
+      "verified": true,
+      "sources": [
+        {
+          "outlet": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2023-11/preso-pelo-8-de-janeiro-tem-mal-subito-e-morre-no-presidio-da-papuda",
+          "date": "2023-11-20"
+        },
+        {
+          "outlet": "CNN Brasil",
+          "url": "https://www.cnnbrasil.com.br/politica/preso-pelo-8-de-janeiro-morre-na-papuda/",
+          "date": "2023-11-20"
+        },
+        {
+          "outlet": "Gazeta do Povo",
+          "url": "https://www.gazetadopovo.com.br/vida-e-cidadania/preso-atos-8-janeiro-brasilia-morre-presidio-papuda/",
+          "date": "2023-11-21"
+        },
+        {
+          "outlet": "Terra — 'sentença de morte'",
+          "url": "https://www.terra.com.br/noticias/brasil/politica/advogado-de-reu-do-8-de-janeiro-morto-na-papuda-disse-ao-stf-que-prisao-seria-sentenca-de-morte",
+          "date": "2023-11-21"
+        }
+      ]
+    },
+
+    {
+      "id": "003",
+      "slug": "milou-verhoof-nl",
+      "name": "Milou Verhoof",
+      "country": "NL",
+      "city": "Países Baixos (local não divulgado)",
+      "age_at_key_event": 17,
+      "date_of_incident": "2017-00-00",
+      "date_of_death": "2023-10-02",
+      "failure_type": [
+        "medical_negligence_in_custody",
+        "impunity_of_aggressor",
+        "state_law_as_weapon"
+      ],
+      "what_happened": "Milou sofreu abuso sexual aos 11 anos. Foi internada em instituição psiquiátrica, onde sofreu segundo abuso sexual — desta vez por outro paciente. Desenvolveu BPD e depressão severa. Após 6 anos de tratamentos e tentativas de suicídio, recebeu eutanásia do psiquiatra Menno Oosterhoff em 02/10/2023, aos 17 anos — tornando-se uma das primeiras menores do mundo a receber eutanásia por sofrimento puramente psiquiátrico. O documentário 'Milou's Strijd Gaat Door' foi o mais assistido da TV pública holandesa em 2025. 14 psiquiatras escreveram ao Ministério Público questionando a legalidade.",
+      "what_state_did_not_do": [
+        "Não protegeu menor internada em instituição psiquiátrica estatal de agressão sexual",
+        "Não responsabilizou o agressor dentro da instituição",
+        "Sistema que deveria curar tornou-se ambiente de novo abuso"
+      ],
+      "state_actors": [
+        "Instituição psiquiátrica holandesa — não identificada publicamente",
+        "Sistema de eutanásia psiquiátrica holandês — debate sobre protocolo para menores"
+      ],
+      "aggressor_punished": false,
+      "status": "DECEASED",
+      "verified": true,
+      "notes": "Caso gera debate ético intenso. A eutanásia foi considerada legal pela comissão revisora holandesa. A falha estatal central é a ausência de proteção dentro da própria instituição e a impunidade do agressor.",
+      "sources": [
+        {
+          "outlet": "DutchNews.nl",
+          "url": "https://www.dutchnews.nl/2024/10/psychiatrists-rebuked-for-criticising-euthanasia-of-17-year-old/",
+          "date": "2024-10-01"
+        },
+        {
+          "outlet": "Exit International",
+          "url": "https://www.exitinternational.net/no-boundaries-are-crossed-in-dutch-euthanasia-practice/",
+          "date": "2024-08-11"
+        },
+        {
+          "outlet": "The Atlantic — The 13 Deaths of Dr. Oosterhoff",
+          "url": "https://dnyuz.com/2026/03/15/the-13-deaths-of-dr-oosterhoff/",
+          "date": "2026-03-15"
+        },
+        {
+          "outlet": "IMDb — documentário",
+          "url": "https://www.imdb.com/title/tt31382169/",
+          "date": "2025-00-00"
+        }
+      ]
+    },
+
+    {
+      "id": "004",
+      "slug": "melika-azizi-ir",
+      "name": "Melika Azizi",
+      "country": "IR",
+      "city": "Masal, Gilão — detida em Prisão Lakan, Rasht",
+      "age_at_key_event": 18,
+      "date_of_incident": "2026-01-00",
+      "date_of_death": null,
+      "failure_type": [
+        "state_law_as_weapon",
+        "institutional_retaliation",
+        "judicial_omission"
+      ],
+      "what_happened": "Detida em janeiro de 2026 durante protestos nacionais no Irã por queimar símbolos do regime. Acusada de 'moharebeh' (guerra contra Deus). Em 21/03/2026, o regime confirmou a pena de morte. Em tribunal, disse ao juiz: 'Vocês deixam tantos jovens sangrarem. Como posso ficar em silêncio? Não me importa. Me matem.' Mantida na Prisão Lakan, Rasht. Na véspera, o regime executou o lutador de 19 anos Saleh Mohammadi, outro preso de janeiro, após confissão obtida sob tortura.",
+      "what_state_did_not_do": null,
+      "what_state_did": [
+        "Prendeu jovem de 18 anos por queimar símbolos do regime durante protesto",
+        "Aplicou acusação de 'guerra contra Deus' — pena capital",
+        "Executa presos políticos com confissões obtidas sob tortura segundo grupos de DH"
+      ],
+      "state_actors": [
+        "Judiciário da República Islâmica do Irã",
+        "Prisão Lakan — Rasht"
+      ],
+      "aggressor_punished": false,
+      "status": "DEATH_SENTENCE_CONFIRMED — EM RISCO IMEDIATO",
+      "verified": true,
+      "sources": [
+        {
+          "outlet": "Catholic365",
+          "url": "https://www.catholic365.com/article/58906/18yr-old-girl-melika-azizi-sentenced-to-death-in-iran-for-protesting.html",
+          "date": "2026-03-21"
+        },
+        {
+          "outlet": "Iran Human Rights / Ynetnews — execuções de março",
+          "url": "https://www.ynetnews.com/article/sjtm3ic911g",
+          "date": "2026-03-23"
+        },
+        {
+          "outlet": "OHCHR — caso Pakhshan Azizi (contexto)",
+          "url": "https://www.ohchr.org/en/press-releases/2025/01/iran-un-experts-alarmed-supreme-court-upholds-death-sentence-kurdish-woman",
+          "date": "2025-01-00"
+        }
+      ]
+    },
+
+    {
+      "id": "005",
+      "slug": "stephanie-nicole-minter-us-va",
+      "name": "Stephanie Nicole Minter",
+      "country": "US",
+      "city": "Hybla Valley, Fairfax County, Virgínia",
+      "age_at_key_event": 41,
+      "date_of_incident": "2026-02-23",
+      "date_of_death": "2026-02-23",
+      "failure_type": [
+        "impunity_of_aggressor",
+        "judicial_omission",
+        "institutional_retaliation"
+      ],
+      "what_happened": "Stephanie esperava num ponto de ônibus na Richmond Highway quando foi esfaqueada e morta por Abdul Jalloh, 32, nacional da Serra Leoa. Jalloh tinha mais de 30 prisões anteriores, incluindo 5 acusações de ferimentos maliciosos entre 2023–2025. A promotoria de Fairfax County descartou os casos violentos repetidamente. A polícia enviou 3 alertas formais ao promotor — em maio, agosto e novembro de 2025 — avisando que Jalloh 'certamente voltaria a ferir ou matar'. O e-mail do Comandante Jeff Mauro dizia: 'não é questão de se, mas de quando'. O ICE tinha um detainer sobre Jalloh que Fairfax County recusou cumprir. Stephanie foi morta dois meses depois do último alerta.",
+      "what_state_did_not_do": [
+        "Promotoria de Fairfax descartou 5+ acusações de ferimentos violentos contra Jalloh",
+        "Fairfax County recusou cumprir detainer do ICE sobre Jalloh",
+        "3 alertas formais da polícia foram ignorados pelo promotor Steve Descano",
+        "Sentença suspensa de 5 anos nunca foi executada"
+      ],
+      "state_actors": [
+        "Promotor Steve Descano — Fairfax County Commonwealth's Attorney",
+        "Fairfax County Board of Supervisors — política de santuário",
+        "Judiciário de Fairfax County — sentenças descartadas"
+      ],
+      "aggressor_punished": true,
+      "aggressor_status": "Abdul Jalloh — preso, acusado de homicídio em 2º grau, sem fiança",
+      "status": "DECEASED",
+      "verified": true,
+      "sources": [
+        {
+          "outlet": "FOX 5 DC — e-mails internos revelados",
+          "url": "https://www.fox5dc.com/news/fairfax-police-warned-prosecutors-about-repeat-offender-months-before-deadly-bus-stop-stabbing",
+          "date": "2026-03-00"
+        },
+        {
+          "outlet": "DHS — comunicado oficial",
+          "url": "https://www.dhs.gov/news/2026/02/28/illegal-alien-more-30-prior-arrests-fatally-stabs-woman-virginia-bus-stop-ice",
+          "date": "2026-02-28"
+        },
+        {
+          "outlet": "NBC Washington",
+          "url": "https://www.nbcwashington.com/news/local/northern-virginia/suspect-charged-victim-identified-in-fatal-hybla-valley-bus-stop-stabbing/4067105/",
+          "date": "2026-02-25"
+        }
+      ]
+    },
+
+    {
+      "id": "006",
+      "slug": "iryna-zarutska-us-nc",
+      "name": "Iryna Zarutska",
+      "country": "US",
+      "city": "Charlotte, Carolina do Norte",
+      "age_at_key_event": 23,
+      "date_of_incident": "2025-08-22",
+      "date_of_death": "2025-08-22",
+      "failure_type": [
+        "failure_to_protect_witness",
+        "judicial_omission",
+        "medical_negligence_in_custody"
+      ],
+      "what_happened": "Iryna, refugiada ucraniana de 23 anos que fugiu da invasão russa em 2022, foi esfaqueada três vezes no pescoço por Decarlos Brown, 34, dentro do trem Lynx Blue Line em Charlotte, às 21h50 de 22/08/2025. Brown tinha extenso histórico criminal — roubos, arrombamentos, agressões — e havia sido solto por magistrado sem fiança por uma contravenção semanas antes do ataque. Sua família e defensor público tentaram interná-lo psiquiatricamente, mas o sistema falhou. Iryna morreu no trem enquanto passageiros tentavam ajudá-la. Havia textado ao namorado 'já vou chegar em casa' minutos antes.",
+      "what_state_did_not_do": [
+        "Sistema judiciário soltou Brown sem fiança por contravenção apesar do histórico violento",
+        "Sistema de saúde mental falhou em internar Brown apesar de tentativas da família",
+        "Segurança do sistema de transporte CATS falhou em detectar Brown sem bilhete e comportamento suspeito"
+      ],
+      "state_actors": [
+        "Judiciário do Condado de Mecklenburg — liberação sem fiança",
+        "Sistema de saúde mental da Carolina do Norte — falha na internação involuntária",
+        "Charlotte Area Transit System (CATS) — falha de segurança"
+      ],
+      "aggressor_punished": true,
+      "aggressor_status": "Decarlos Brown Jr. — acusado de homicídio de 1º grau (estadual) + crime federal em sistema de transporte",
+      "status": "DECEASED",
+      "impact": "Morte gerou aprovação da 'Lei de Iryna' (HB 307) na Carolina do Norte restringindo bail e reformando saúde mental. Homenageada em murais em 5 estados americanos. Documentário em produção.",
+      "verified": true,
+      "sources": [
+        {
+          "outlet": "Wikipedia — artigo completo sobre o caso",
+          "url": "https://en.wikipedia.org/wiki/Killing_of_Iryna_Zarutska",
+          "date": "2025-09-00"
+        },
+        {
+          "outlet": "CNN — reconstrução do ataque",
+          "url": "https://www.cnn.com/2025/09/09/us/charlotte-train-stabbing-ukrainian-victim",
+          "date": "2025-09-09"
+        },
+        {
+          "outlet": "DOJ — indiciamento federal",
+          "url": "https://www.justice.gov/usao-wdnc/pr/federal-indictment-charges-charlotte-man-light-rail-fatal-attack-iryna-zarutska",
+          "date": "2025-10-00"
+        }
+      ]
+    },
+
+    {
+      "id": "007",
+      "slug": "patrick-heringer-us-oh",
+      "name": "Patrick Arden Heringer",
+      "country": "US",
+      "city": "Over-the-Rhine, Cincinnati, Ohio",
+      "age_at_key_event": 46,
+      "date_of_incident": "2025-06-04",
+      "date_of_death": "2025-06-04",
+      "failure_type": [
+        "impunity_of_aggressor",
+        "judicial_omission",
+        "institutional_retaliation"
+      ],
+      "what_happened": "Patrick, veterano do Exército americano (Bronze Stars no Iraque e Afeganistão) e dono da academia Findlay Movement, foi acordado às 4h30 por um invasor em sua casa. Tentou proteger a esposa Sarah e foi esfaqueado no pescoço por Mordecia Black, 38, ex-presidiário. Black tinha sido condenado a 9,5 anos por agressão grave, saiu em janeiro de 2025, cortou o tornozeleiro eletrônico em fevereiro, desapareceu da casa de reabilitação, e NINGUÉM o capturou. Em maio, já havia cometido outro roubo com mandado expedido — mas continuou livre. Três semanas depois, matou Patrick. O ODRC perdeu rastro de Black por meses.",
+      "what_state_did_not_do": [
+        "ODRC (Dept. de Reabilitação de Ohio) perdeu rastro de Black por meses após cortar tornozeleiro",
+        "CPD não capturou Black após mandado de maio de 2025 por roubo",
+        "Sistema de supervisão pós-prisão falhou em monitorar 'agressor violento alvo' (TVO)"
+      ],
+      "state_actors": [
+        "Ohio Department of Rehabilitation and Correction (ODRC) — perda de monitoramento",
+        "Cincinnati Police Department — não capturou com mandado ativo",
+        "Autoridade de Liberdade Condicional de Ohio — falha de supervisão"
+      ],
+      "aggressor_punished": true,
+      "aggressor_status": "Mordecia Black — 14 acusações incluindo homicídio qualificado, fiança de $5M",
+      "impact": "Viúva Sarah Heringer tornou-se voz pública. ODRC mudou política de notificação para agressores violentos evadidos. Cincinnati Police reconheceu déficit de 130 oficiais.",
+      "status": "DECEASED",
+      "verified": true,
+      "sources": [
+        {
+          "outlet": "Spectrum News 1",
+          "url": "https://spectrumnews1.com/oh/columbus/news/2025/06/11/patrick-heringer--sarah-heringer--brant-dutle--findlay-movement--mordeica-black--public-safety--cpd",
+          "date": "2025-06-11"
+        },
+        {
+          "outlet": "WCPO — 'não foi uma tragédia, foi negligência'",
+          "url": "https://www.wcpo.com/news/local-news/hamilton-county/cincinnati/over-the-rhine/this-was-not-a-tragedy-this-was-negligence-wife-of-man-killed-in-otr-demands-answers-from-city-leaders",
+          "date": "2025-06-09"
+        },
+        {
+          "outlet": "WVXU — indiciamento",
+          "url": "https://www.wvxu.org/local-news/2025-06-16/mordecia-black-charges-over-the-rhine-stabbing",
+          "date": "2025-06-16"
+        },
+        {
+          "outlet": "FOX19 — mudança de política do ODRC",
+          "url": "https://bluewaterhealthyliving.com/news/national-news/ohio/state-changes-policy-after-widow-of-slain-otr-man-calls-for-change-and-accountability/",
+          "date": "2025-06-12"
+        }
+      ]
+    },
+
+    {
+      "id": "008",
+      "slug": "deaths-ice-detention-us-2025",
+      "name": "[CATEGORIA] Mortes em Detenção ICE — EUA 2025",
+      "country": "US",
+      "city": "Múltiplos estados",
+      "age_at_key_event": null,
+      "date_of_incident": "2025-01-01",
+      "date_of_death": "2025-12-31",
+      "failure_type": [
+        "medical_negligence_in_custody",
+        "preventive_detention_death",
+        "institutional_retaliation"
+      ],
+      "what_happened": "2025 registrou 31 mortes em detenção do ICE — o maior número desde 2004. Dezembro de 2025 foi o mês mais letal já registrado. O ICE regularmente 'libera' detidos momentos antes de sua morte para não contabilizá-los nos relatórios oficiais. Pelo menos 17 mortes adicionais em custódia do Border Patrol foram relatadas ao Congresso no primeiro ano do governo Trump.",
+      "what_state_did_not_do": [
+        "Subnotificação sistemática — ICE libera detidos antes da morte para não contabilizar",
+        "Negação de cuidados médicos documentada em múltiplos centros de detenção",
+        "Isolamento que impede familiares e advogados de saber do estado de saúde"
+      ],
+      "state_actors": [
+        "U.S. Immigration and Customs Enforcement (ICE)",
+        "Department of Homeland Security (DHS)"
+      ],
+      "status": "CATEGORIA_ABERTA — 31 mortes confirmadas em 2025",
+      "verified": true,
+      "sources": [
+        {
+          "outlet": "Wikipedia — lista de mortes em detenção ICE",
+          "url": "https://en.wikipedia.org/wiki/List_of_deaths_in_ICE_detention",
+          "date": "2026-03-15"
+        }
+      ]
+    }
+
+  ],
+
+  "cases_needed": {
+    "description": "30+ casos adicionais a catalogar — contribuição da comunidade necessária",
+    "priority_countries": ["UK", "FR", "IT", "DE", "MX", "AR", "CO", "IN", "NG", "PH", "RU", "CN"],
+    "priority_types": [
+      "police_lethality",
+      "death_in_psychiatric_custody",
+      "prison_torture",
+      "femicide_with_prior_denunciations_ignored",
+      "execution_after_unfair_trial"
+    ],
+    "how_to_contribute": "Abra um PR em https://github.com/araguaci/vitimas-do-estado com arquivo JSON seguindo o schema deste repositório"
+  }
+}

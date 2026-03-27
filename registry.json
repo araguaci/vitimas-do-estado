@@ -1,0 +1,22 @@
+{
+  "manifest_version": "1.0.0",
+  "project_name": "State Victims Registry",
+  "description": "Manifest único: caminhos dos datasets e páginas consumidoras.",
+  "datasets": {
+    "brazil": {
+      "path": "data/state-victims-brazil.json",
+      "label": "Brasil — panorama sistêmico",
+      "href": "brasil.html"
+    },
+    "custody_brazil": {
+      "path": "data/state-victims-brazil-custody-deaths.json",
+      "label": "Mortes em custódia (Brasil)",
+      "href": "custody.html"
+    },
+    "global_cases": {
+      "path": "data/state-victims-cases.json",
+      "label": "Casos globais",
+      "href": "cases.html"
+    }
+  }
+}
