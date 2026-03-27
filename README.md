@@ -4,6 +4,8 @@ Site estático que publica o **Registro de Vítimas do Estado** — documentaç�
 
 **Repositório:** [github.com/araguaci/vitimas-do-estado](https://github.com/araguaci/vitimas-do-estado)
 
+**Especificação dos JSON:** [SCHEMA.md](./SCHEMA.md)
+
 ---
 
 ## Objetivo
