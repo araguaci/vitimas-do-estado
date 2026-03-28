@@ -4,7 +4,7 @@
   "generated": "2026-03-27",
   "license": "CC0 1.0 Universal",
   "total_cases": 8,
-  "notes": "Casos verificados com fontes primárias. Milou Verhoof e Melika Azizi: status vivos com risco/morte iminente documentada. Busca por 30+ casos adicionais: requer contribuição da comunidade — ver CONTRIBUTING.md.",
+  "notes": "Casos verificados com fontes primárias. Milou Verhoof: status vivo com risco documentado. Melika Azizi: caso encerrado editorialmente (mar/2026); pena de morte relatada, execução não confirmada por fontes independentes. Busca por 30+ casos adicionais: requer contribuição da comunidade — ver CONTRIBUTING.md.",
 
   "cases": [
 
@@ -171,7 +171,7 @@
         "institutional_retaliation",
         "judicial_omission"
       ],
-      "what_happened": "Detida em janeiro de 2026 durante protestos nacionais no Irã por queimar símbolos do regime. Acusada de 'moharebeh' (guerra contra Deus). Em 21/03/2026, o regime confirmou a pena de morte. Em tribunal, disse ao juiz: 'Vocês deixam tantos jovens sangrarem. Como posso ficar em silêncio? Não me importa. Me matem.' Mantida na Prisão Lakan, Rasht. Na véspera, o regime executou o lutador de 19 anos Saleh Mohammadi, outro preso de janeiro, após confissão obtida sob tortura.",
+      "what_happened": "Detida em janeiro de 2026 durante protestos nacionais no Irã por queimar símbolos do regime. Acusada de 'moharebeh' (guerra contra Deus). Em 21/03/2026, várias fontes noticiosas e de opinião relataram que o regime teria confirmado a pena de morte. Em tribunal, disse ao juiz: 'Vocês deixam tantos jovens sangrarem. Como posso ficar em silêncio? Não me importa. Me matem.' Mantida na Prisão Lakan, Rasht. Na véspera, o regime executou o lutador de 19 anos Saleh Mohammadi, outro preso de janeiro, após confissão obtida sob tortura. Até março de 2026, organizações de direitos humanos com páginas públicas sobre detidos (p.ex. Iran Human Rights em pesquisa por nome) e o Witness Report não registavam execução nem data de morte; circularam rumores de execução sem confirmação independente verificável.",
       "what_state_did_not_do": null,
       "what_state_did": [
         "Prendeu jovem de 18 anos por queimar símbolos do regime durante protesto",
@@ -183,23 +183,24 @@
         "Prisão Lakan — Rasht"
       ],
       "aggressor_punished": false,
-      "status": "DEATH_SENTENCE_CONFIRMED — EM RISCO IMEDIATO",
+      "status": "ENCERRADO — execução não confirmada por fontes independentes (consulta 2026-03-27)",
       "verified": true,
+      "notes": "Pena de morte relatada em março/2026 (fontes secundárias). Não foi encontrada confirmação em relatórios típicos de DH nem data de óbito; Witness Report mantém registo de detida. Não confundir com Pakhshan Azizi (outro caso, coberto pela ONU).",
       "sources": [
         {
-          "outlet": "Catholic365",
+          "outlet": "Witness Report — registo de detenção (Masal, Prisão Lakan)",
+          "url": "https://witness.report/people/184edc4a-07ae-11f1-9fbd-560003f1f421/melika-azizi",
+          "date": "2026-02-11"
+        },
+        {
+          "outlet": "Catholic365 — condenação à morte relatada",
           "url": "https://www.catholic365.com/article/58906/18yr-old-girl-melika-azizi-sentenced-to-death-in-iran-for-protesting.html",
           "date": "2026-03-21"
         },
         {
-          "outlet": "Iran Human Rights / Ynetnews — execuções de março",
+          "outlet": "Ynetnews — onda de execuções no Irã (contexto março 2026)",
           "url": "https://www.ynetnews.com/article/sjtm3ic911g",
           "date": "2026-03-23"
-        },
-        {
-          "outlet": "OHCHR — caso Pakhshan Azizi (contexto)",
-          "url": "https://www.ohchr.org/en/press-releases/2025/01/iran-un-experts-alarmed-supreme-court-upholds-death-sentence-kurdish-woman",
-          "date": "2025-01-00"
         }
       ]
     },
